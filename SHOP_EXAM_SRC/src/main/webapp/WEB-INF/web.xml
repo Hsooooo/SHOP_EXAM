@@ -6,7 +6,7 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath*:config/context-*.xml</param-value>
+		<param-value>classpath:config/context-db.xml</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -25,6 +25,11 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 		
+	<context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>/WEB-INF/config/log4j.xml</param-value>
+    </context-param>
+	
 	<servlet-mapping>
 		<servlet-name>action</servlet-name>
 		<url-pattern>*.do</url-pattern>

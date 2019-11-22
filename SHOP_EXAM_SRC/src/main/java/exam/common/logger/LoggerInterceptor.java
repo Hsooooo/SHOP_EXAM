@@ -13,15 +13,16 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 
 public class LoggerInterceptor extends HandlerInterceptorAdapter{
-	protected Logger log = LoggerFactory.getLogger(getClass());
+	private Logger log = LoggerFactory.getLogger(getClass());
+	
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		if(log.isDebugEnabled()) {
-			log.debug("======================================[START]");
-			log.debug("======================================[Request URL] " + request.getRequestURI());
-		}
+		
+		log.debug("======================================[START]");
+		log.debug("======================================[Request URL] " + request.getRequestURI());
+		
 		return super.preHandle(request, response, handler);
 	}
 

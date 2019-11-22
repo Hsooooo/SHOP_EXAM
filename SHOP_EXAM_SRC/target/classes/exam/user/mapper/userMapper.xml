@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="exam.user.dao.UserDao">
+	<select id="userList" resultType="exam.user.dto.UserDto">
+		SELECT USER_NO AS user_no
+			 , USER_NAME AS user_name
+			 , USER_BIRTH AS user_birth
+			 , USER_JOIN_TYPE AS user_join_type
+			 , USER_REG_DATE AS user_reg_date
+		  FROM USER_BASIC_INFO
+	</select>
+
+</mapper>
+

@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.rkrk6469.exam">
+	<logger name="exam.*">
 		<level value="info" />
 	</logger>
 	
