@@ -8,6 +8,74 @@
 			 , USER_REG_DATE AS user_reg_date
 		  FROM USER_BASIC_INFO
 	</select>
+	
+	<select id="getUserChk" resultType="java.lang.Integer" parameterType="java.util.Map">
+		SELECT COUNT(*)
+		  FROM USER_BASIC_INFO
+		 WHERE USER_EMAIL = #{email}
+		   AND USER_NAME = #{name}
+	</select>
+	
+	<select id="idCheck" resultType="java.lang.Integer" parameterType="java.lang.String">
+		SELECT COUNT(*)
+		  FROM USER_ACCOUNT_INFO
+		 WHERE USER_ID = #{id}
+	</select>
+	
+	<insert id="insertBasicUserInfo" parameterType="java.util.Map">
+		INSERT INTO USER_BASIC_INFO(
+				USER_NO,
+				USER_NAME,
+				USER_BIRTH,
+				USER_JOIN_TYPE,
+				USER_REG_DATE,
+				USER_EMAIL
+		)
+		VALUES(
+				#{userNo},
+				#{name, jdbcType=VARCHAR},
+				'19940110',
+				'W',
+				sysdate,
+				#{email, jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<insert id="insertUserAccountInfo" parameterType="java.util.Map">
+		INSERT INTO USER_ACCOUNT_INFO(
+			USER_NO,
+			USER_EMAIL,
+			USER_ID,
+			USER_PWD
+		)
+		VALUES(
+			#{userNo},
+			#{email, jdbcType=VARCHAR},
+			#{id, jdbcType=VARCHAR},
+			#{pwd, jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<insert id="insertUserAddrInfo" parameterType="java.util.Map">
+		INSERT INTO USER_DELIVERY_ADDR(
+			USER_NO,
+			USER_ADDR,
+			ADDR_FLAG,
+			USER_POST_CODE,
+			USER_ADDR_DETAIL
+		)
+		VALUES(
+			#{userNo},
+			#{addr, jdbcType=VARCHAR},
+			'0',
+			#{postCode, jdbcType=VARCHAR},
+			#{addrDetail, jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<select id="getUserNo" resultType="java.lang.String">
+		SELECT SEQ_USER_BASIC_INFO.NEXTVAL FROM DUAL
+	</select>
 
 </mapper>
 

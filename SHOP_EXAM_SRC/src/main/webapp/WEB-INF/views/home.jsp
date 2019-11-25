@@ -2,926 +2,1072 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page session="false" %>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home | E-Shopper</title>
+    <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<%=request.getContextPath() %>/css/prettyPhoto.css" rel="stylesheet">
+    <link href="<%=request.getContextPath() %>/css/price-range.css" rel="stylesheet">
+    <link href="<%=request.getContextPath() %>/css/animate.css" rel="stylesheet">
+	<link href="<%=request.getContextPath() %>/css/main.css" rel="stylesheet">
+	<link href="<%=request.getContextPath() %>/css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=request.getContextPath() %>/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=request.getContextPath() %>/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=request.getContextPath() %>/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath() %>/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
 
-    <head>
-        <!-- meta data -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-        <!--font-family-->
-		<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-        
-        <!-- title of site -->
-        <title>Furniture</title>
-
-        <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="<%=request.getContextPath()%>//logo/favicon.png"/>
-       
-        <!--font-awesome.min.css-->
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/css/font-awesome.min.css">
-
-        <!--linear icon css-->
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/linearicons.css">
-
-		<!--animate.css-->
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/css/animate.css">
-
-        <!--owl.carousel.css-->
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/owl.theme.default.min.css">
+<body>
+	<header id="header"><!--header-->
+		<div class="header_top"><!--header_top-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contactinfo">
+							<ul class="nav nav-pills">
+								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="social-icons pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header_top-->
 		
-        <!--bootstrap.min.css-->
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css">
-		
-		<!-- bootsnav -->
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootsnav.css" >	
-        
-        <!--style.css-->
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
-        
-        <!--responsive.css-->
-        <link rel="stylesheet" href="<%=request.getContextPath()%>/css/responsive.css">
-        
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		
-        <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-    </head>
+		<div class="header-middle"><!--header-middle-->
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 clearfix">
+						<div class="logo pull-left">
+							<a href="index.html"><img src="<%=request.getContextPath() %>/images/home/logo.png" alt="" /></a>
+						</div>
+						<div class="btn-group pull-right clearfix">
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+									USA
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="">Canada</a></li>
+									<li><a href="">UK</a></li>
+								</ul>
+							</div>
+							
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+									DOLLAR
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="">Canadian Dollar</a></li>
+									<li><a href="">Pound</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8 clearfix">
+						<div class="shop-menu clearfix pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
+								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
+								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="/exam/login.do"><i class="fa fa-lock"></i> Login</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-middle-->
 	
-	<body>
-		<!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-		
-		
+		<div class="header-bottom"><!--header-bottom-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-9">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="mainmenu pull-left">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<li><a href="index.html" class="active">Home</a></li>
+								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="shop.html">Products</a></li>
+										<li><a href="product-details.html">Product Details</a></li> 
+										<li><a href="checkout.html">Checkout</a></li> 
+										<li><a href="cart.html">Cart</a></li> 
+										<li><a href="login.html">Login</a></li> 
+                                    </ul>
+                                </li> 
+								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="blog.html">Blog List</a></li>
+										<li><a href="blog-single.html">Blog Single</a></li>
+                                    </ul>
+                                </li> 
+								<li><a href="404.html">404</a></li>
+								<li><a href="contact-us.html">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="search_box pull-right">
+							<input type="text" placeholder="Search"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-bottom-->
+	</header><!--/header-->
 	
-		<!--welcome-hero start -->
-		<header id="home" class="welcome-hero">
-
-			<div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-				<!--/.carousel-indicator -->
-				 <ol class="carousel-indicators">
-					<li data-target="#header-carousel" data-slide-to="0" class="active"><span class="small-circle"></span></li>
-					<li data-target="#header-carousel" data-slide-to="1"><span class="small-circle"></span></li>
-					<li data-target="#header-carousel" data-slide-to="2"><span class="small-circle"></span></li>
-				</ol><!-- /ol-->
-				<!--/.carousel-indicator -->
-
-				<!--/.carousel-inner -->
-				<div class="carousel-inner" role="listbox">
-					<!-- .item -->
-					<div class="item active">
-						<div class="single-slide-item slide1">
-							<div class="container">
-								<div class="welcome-hero-content">
-									<div class="row">
-										<div class="col-sm-7">
-											<div class="single-welcome-hero">
-												<div class="welcome-hero-txt">
-													<h4>great design collection</h4>
-													<h2>cloth covered accent chair</h2>
-													<p>
-														Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiuiana smod tempor  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. 
-													</p>
-													<div class="packages-price">
-														<p>
-															$ 399.00
-															<del>$ 499.00</del>
-														</p>
-													</div>
-													<button class="btn-cart welcome-add-cart" onclick="window.location.href='#'">
-														<span class="lnr lnr-plus-circle"></span>
-														add <span>to</span> cart
-													</button>
-													<button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='#'">
-														more info
-													</button>
-												</div><!--/.welcome-hero-txt-->
-											</div><!--/.single-welcome-hero-->
-										</div><!--/.col-->
-										<div class="col-sm-5">
-											<div class="single-welcome-hero">
-												<div class="welcome-hero-img">
-													<img src="<%=request.getContextPath()%>/images/slider/slider1.png" alt="slider image">
-												</div><!--/.welcome-hero-txt-->
-											</div><!--/.single-welcome-hero-->
-										</div><!--/.col-->
-									</div><!--/.row-->
-								</div><!--/.welcome-hero-content-->
-							</div><!-- /.container-->
-						</div><!-- /.single-slide-item-->
-
-					</div><!-- /.item .active-->
-
-					<div class="item">
-						<div class="single-slide-item slide2">
-							<div class="container">
-								<div class="welcome-hero-content">
-									<div class="row">
-										<div class="col-sm-7">
-											<div class="single-welcome-hero">
-												<div class="welcome-hero-txt">
-													<h4>great design collection</h4>
-													<h2>mapple wood accent chair</h2>
-													<p>
-														Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiuiana smod tempor  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. 
-													</p>
-													<div class="packages-price">
-														<p>
-															$ 199.00
-															<del>$ 299.00</del>
-														</p>
-													</div>
-													<button class="btn-cart welcome-add-cart" onclick="window.location.href='#'">
-														<span class="lnr lnr-plus-circle"></span>
-														add <span>to</span> cart
-													</button>
-													<button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='#'">
-														more info
-													</button>
-												</div><!--/.welcome-hero-txt-->
-											</div><!--/.single-welcome-hero-->
-										</div><!--/.col-->
-										<div class="col-sm-5">
-											<div class="single-welcome-hero">
-												<div class="welcome-hero-img">
-													<img src="<%=request.getContextPath()%>/images/slider/slider2.png" alt="slider image">
-												</div><!--/.welcome-hero-txt-->
-											</div><!--/.single-welcome-hero-->
-										</div><!--/.col-->
-									</div><!--/.row-->
-								</div><!--/.welcome-hero-content-->
-							</div><!-- /.container-->
-						</div><!-- /.single-slide-item-->
-
-					</div><!-- /.item .active-->
-
-					<div class="item">
-						<div class="single-slide-item slide3">
-							<div class="container">
-								<div class="welcome-hero-content">
-									<div class="row">
-										<div class="col-sm-7">
-											<div class="single-welcome-hero">
-												<div class="welcome-hero-txt">
-													<h4>great design collection</h4>
-													<h2>valvet accent arm chair</h2>
-													<p>
-														Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiuiana smod tempor  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. 
-													</p>
-													<div class="packages-price">
-														<p>
-															$ 299.00
-															<del>$ 399.00</del>
-														</p>
-													</div>
-													<button class="btn-cart welcome-add-cart" onclick="window.location.href='#'">
-														<span class="lnr lnr-plus-circle"></span>
-														add <span>to</span> cart
-													</button>
-													<button class="btn-cart welcome-add-cart welcome-more-info" onclick="window.location.href='#'">
-														more info
-													</button>
-												</div><!--/.welcome-hero-txt-->
-											</div><!--/.single-welcome-hero-->
-										</div><!--/.col-->
-										<div class="col-sm-5">
-											<div class="single-welcome-hero">
-												<div class="welcome-hero-img">
-													<img src="<%=request.getContextPath()%>/images/slider/slider3.png" alt="slider image">
-												</div><!--/.welcome-hero-txt-->
-											</div><!--/.single-welcome-hero-->
-										</div><!--/.col-->
-									</div><!--/.row-->
-								</div><!--/.welcome-hero-content-->
-							</div><!-- /.container-->
-						</div><!-- /.single-slide-item-->
+	<section id="slider"><!--slider-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+							<li data-target="#slider-carousel" data-slide-to="1"></li>
+							<li data-target="#slider-carousel" data-slide-to="2"></li>
+						</ol>
 						
-					</div><!-- /.item .active-->
-				</div><!-- /.carousel-inner-->
-
-			</div><!--/#header-carousel-->
-
-			<!-- top-area Start -->
-			<div class="top-area">
-				<div class="header-area">
-					<!-- Start Navigation -->
-				    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
-
-				        <!-- Start Top Search -->
-				        <div class="top-search">
-				            <div class="container">
-				                <div class="input-group">
-				                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-				                    <input type="text" class="form-control" placeholder="Search">
-				                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-				                </div>
-				            </div>
-				        </div>
-				        <!-- End Top Search -->
-
-				        <div class="container">            
-				            <!-- Start Atribute Navigation -->
-				            <div class="attr-nav">
-				                <ul>
-				                	<li class="search">
-				                		<a href="#"><span class="lnr lnr-magnifier"></span></a>
-				                	</li><!--/.search-->
-				                	<li class="nav-setting">
-				                		<a href="/exam/join.do"><span class="lnr lnr-cog"></span></a>
-				                	</li><!--/.search-->
-				                    <li class="dropdown">
-				                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-				                            <span class="lnr lnr-cart"></span>
-											<span class="badge badge-bg-1">2</span>
-				                        </a>
-				                        <ul class="dropdown-menu cart-list s-cate">
-				                            <li class="single-cart-list">
-				                                <a href="#" class="photo"><img src="<%=request.getContextPath()%>/images/collection/arrivals1.png" class="cart-thumb" alt="image" /></a>
-				                                <div class="cart-list-txt">
-				                                	<h6><a href="#">arm <br> chair</a></h6>
-				                                	<p>1 x - <span class="price">$180.00</span></p>
-				                                </div><!--/.cart-list-txt-->
-				                                <div class="cart-close">
-				                                	<span class="lnr lnr-cross"></span>
-				                                </div><!--/.cart-close-->
-				                            </li><!--/.single-cart-list -->
-				                            <li class="single-cart-list">
-				                                <a href="#" class="photo"><img src="<%=request.getContextPath()%>/images/collection/arrivals2.png" class="cart-thumb" alt="image" /></a>
-				                                <div class="cart-list-txt">
-				                                	<h6><a href="#">single <br> armchair</a></h6>
-				                                	<p>1 x - <span class="price">$180.00</span></p>
-				                                </div><!--/.cart-list-txt-->
-				                                <div class="cart-close">
-				                                	<span class="lnr lnr-cross"></span>
-				                                </div><!--/.cart-close-->
-				                            </li><!--/.single-cart-list -->
-				                            <li class="single-cart-list">
-				                                <a href="#" class="photo"><img src="<%=request.getContextPath()%>/images/collection/arrivals3.png" class="cart-thumb" alt="image" /></a>
-				                                <div class="cart-list-txt">
-				                                	<h6><a href="#">wooden arn <br> chair</a></h6>
-				                                	<p>1 x - <span class="price">$180.00</span></p>
-				                                </div><!--/.cart-list-txt-->
-				                                <div class="cart-close">
-				                                	<span class="lnr lnr-cross"></span>
-				                                </div><!--/.cart-close-->
-				                            </li><!--/.single-cart-list -->
-				                            <li class="total">
-				                                <span>Total: $0.00</span>
-				                                <button class="btn-cart pull-right" onclick="window.location.href='#'">view cart</button>
-				                            </li>
-				                        </ul>
-				                    </li><!--/.dropdown-->
-				                </ul>
-				            </div><!--/.attr-nav-->
-				            <!-- End Atribute Navigation -->
-
-				            <!-- Start Header Navigation -->
-				            <div class="navbar-header">
-				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-				                    <i class="fa fa-bars"></i>
-				                </button>
-				                <a class="navbar-brand" href="index.html">furn.</a>
-
-				            </div><!--/.navbar-header-->
-				            <!-- End Header Navigation -->
-
-				            <!-- Collect the nav links, forms, and other content for toggling -->
-				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
-				                <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-				                    <li class=" scroll active"><a href="#home">home</a></li>
-				                    <li class="scroll"><a href="#new-arrivals">new arrival</a></li>
-				                    <li class="scroll"><a href="#feature">features</a></li>
-				                    <li class="scroll"><a href="#blog">blog</a></li>
-				                    <li class="scroll"><a href="#newsletter">contact</a></li>
-				                </ul><!--/.nav -->
-				            </div><!-- /.navbar-collapse -->
-				        </div><!--/.container-->
-				    </nav><!--/nav-->
-				    <!-- End Navigation -->
-				</div><!--/.header-area-->
-			    <div class="clearfix"></div>
-
-			</div><!-- /.top-area-->
-			<!-- top-area End -->
-
-		</header><!--/.welcome-hero-->
-		<!--welcome-hero end -->
-
-		<!--populer-products start -->
-		<section id="populer-products" class="populer-products">
-			<div class="container">
-				<div class="populer-products-content">
-					<div class="row">
-						<div class="col-md-3">
-							<div class="single-populer-products">
-								<div class="single-populer-product-img mt40">
-									<img src="<%=request.getContextPath()%>/images/populer-products/p1.png" alt="populer-products images">
+						<div class="carousel-inner">
+							<div class="item active">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>Free E-Commerce Template</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
-								<h2><a href="#">arm chair</a></h2>
-								<div class="single-populer-products-para">
-									<p>Nemo enim ipsam voluptatem quia volu ptas sit asperna aut odit aut fugit.</p>
+								<div class="col-sm-6">
+									<img src="<%=request.getContextPath() %>/images/home/girl1.jpg" class="girl img-responsive" alt="" />
+									<img src="<%=request.getContextPath() %>/images/home/pricing.png"  class="pricing" alt="" />
 								</div>
 							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="single-populer-products">
-								<div class="single-inner-populer-products">
-									<div class="row">
-										<div class="col-md-4 col-sm-12">
-											<div class="single-inner-populer-product-img">
-												<img src="<%=request.getContextPath()%>/images/populer-products/p2.png" alt="populer-products images">
-											</div>
-										</div>
-										<div class="col-md-8 col-sm-12">
-											<div class="single-inner-populer-product-txt">
-												<h2>
-													<a href="#">
-														latest designed stool <span>and</span> chair
-													</a>
-												</h2>
-												<p>
-													Edi ut perspiciatis unde omnis iste natusina error sit voluptatem accusantium doloret mque laudantium, totam rem aperiam.
-												</p>
-												<div class="populer-products-price">
-													<h4>Sales Start from <span>$99.00</span></h4>
-												</div>
-												<button class="btn-cart welcome-add-cart populer-products-btn" onclick="window.location.href='#'">
-													discover more
-												</button>
-											</div>
-										</div>
-									</div>
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>100% Responsive Design</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="<%=request.getContextPath() %>/images/home/girl2.jpg" class="girl img-responsive" alt="" />
+									<img src="<%=request.getContextPath() %>/images/home/pricing.png"  class="pricing" alt="" />
 								</div>
 							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="single-populer-products">
-								<div class="single-populer-products">
-									<div class="single-populer-product-img">
-										<img src="<%=request.getContextPath()%>/images/populer-products/p3.png" alt="populer-products images">
-									</div>
-									<h2><a href="#">hanging lamp</a></h2>
-									<div class="single-populer-products-para">
-										<p>Nemo enim ipsam voluptatem quia volu ptas sit asperna aut odit aut fugit.</p>
-									</div>
+							
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>Free Ecommerce Template</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div><!--/.container-->
-
-		</section><!--/.populer-products-->
-		<!--populer-products end-->
-
-		<!--new-arrivals start -->
-		<section id="new-arrivals" class="new-arrivals">
-			<div class="container">
-				<div class="section-header">
-					<h2>new arrivals</h2>
-				</div><!--/.section-header-->
-				<div class="new-arrivals-content">
-					<div class="row">
-						<div class="col-md-3 col-sm-4">
-							<div class="single-new-arrival">
-								<div class="single-new-arrival-bg">
-									<img src="<%=request.getContextPath()%>/images/collection/arrivals1.png" alt="new-arrivals images">
-									<div class="single-new-arrival-bg-overlay"></div>
-									<div class="sale bg-1">
-										<p>sale</p>
-									</div>
-									<div class="new-arrival-cart">
-										<p>
-											<span class="lnr lnr-cart"></span>
-											<a href="#">add <span>to </span> cart</a>
-										</p>
-										<p class="arrival-review pull-right">
-											<span class="lnr lnr-heart"></span>
-											<span class="lnr lnr-frame-expand"></span>
-										</p>
-									</div>
-								</div>
-								<h4><a href="#">wooden chair</a></h4>
-								<p class="arrival-product-price">$65.00</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4">
-							<div class="single-new-arrival">
-								<div class="single-new-arrival-bg">
-									<img src="<%=request.getContextPath()%>/images/collection/arrivals2.png" alt="new-arrivals images">
-									<div class="single-new-arrival-bg-overlay"></div>
-									<div class="sale bg-2">
-										<p>sale</p>
-									</div>
-									<div class="new-arrival-cart">
-										<p>
-											<span class="lnr lnr-cart"></span>
-											<a href="#">add <span>to </span> cart</a>
-										</p>
-										<p class="arrival-review pull-right">
-											<span class="lnr lnr-heart"></span>
-											<span class="lnr lnr-frame-expand"></span>
-										</p>
-									</div>
-								</div>
-								<h4><a href="#">single armchair</a></h4>
-								<p class="arrival-product-price">$80.00</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4">
-							<div class="single-new-arrival">
-								<div class="single-new-arrival-bg">
-									<img src="<%=request.getContextPath()%>/images/collection/arrivals3.png" alt="new-arrivals images">
-									<div class="single-new-arrival-bg-overlay"></div>
-									<div class="new-arrival-cart">
-										<p>
-											<span class="lnr lnr-cart"></span>
-											<a href="#">add <span>to </span> cart</a>
-										</p>
-										<p class="arrival-review pull-right">
-											<span class="lnr lnr-heart"></span>
-											<span class="lnr lnr-frame-expand"></span>
-										</p>
-									</div>
-								</div>
-								<h4><a href="#">wooden armchair</a></h4>
-								<p class="arrival-product-price">$40.00</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4">
-							<div class="single-new-arrival">
-								<div class="single-new-arrival-bg">
-									<img src="<%=request.getContextPath()%>/images/collection/arrivals4.png" alt="new-arrivals images">
-									<div class="single-new-arrival-bg-overlay"></div>
-									<div class="sale bg-1">
-										<p>sale</p>
-									</div>
-									<div class="new-arrival-cart">
-										<p>
-											<span class="lnr lnr-cart"></span>
-											<a href="#">add <span>to </span> cart</a>
-										</p>
-										<p class="arrival-review pull-right">
-											<span class="lnr lnr-heart"></span>
-											<span class="lnr lnr-frame-expand"></span>
-										</p>
-									</div>
-								</div>
-								<h4><a href="#">stylish chair</a></h4>
-								<p class="arrival-product-price">$100.00</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4">
-							<div class="single-new-arrival">
-								<div class="single-new-arrival-bg">
-									<img src="<%=request.getContextPath()%>/images/collection/arrivals5.png" alt="new-arrivals images">
-									<div class="single-new-arrival-bg-overlay"></div>
-									<div class="new-arrival-cart">
-										<p>
-											<span class="lnr lnr-cart"></span>
-											<a href="#">add <span>to </span> cart</a>
-										</p>
-										<p class="arrival-review pull-right">
-											<span class="lnr lnr-heart"></span>
-											<span class="lnr lnr-frame-expand"></span>
-										</p>
-									</div>
-								</div>
-								<h4><a href="#">modern chair</a></h4>
-								<p class="arrival-product-price">$120.00</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4">
-							<div class="single-new-arrival">
-								<div class="single-new-arrival-bg">
-									<img src="<%=request.getContextPath()%>/images/collection/arrivals6.png" alt="new-arrivals images">
-									<div class="single-new-arrival-bg-overlay"></div>
-									<div class="sale bg-1">
-										<p>sale</p>
-									</div>
-									<div class="new-arrival-cart">
-										<p>
-											<span class="lnr lnr-cart"></span>
-											<a href="#">add <span>to </span> cart</a>
-										</p>
-										<p class="arrival-review pull-right">
-											<span class="lnr lnr-heart"></span>
-											<span class="lnr lnr-frame-expand"></span>
-										</p>
-									</div>
-								</div>
-								<h4><a href="#">mapple wood dinning table</a></h4>
-								<p class="arrival-product-price">$140.00</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4">
-							<div class="single-new-arrival">
-								<div class="single-new-arrival-bg">
-									<img src="<%=request.getContextPath()%>/images/collection/arrivals7.png" alt="new-arrivals images">
-									<div class="single-new-arrival-bg-overlay"></div>
-									<div class="sale bg-2">
-										<p>sale</p>
-									</div>
-									<div class="new-arrival-cart">
-										<p>
-											<span class="lnr lnr-cart"></span>
-											<a href="#">add <span>to </span> cart</a>
-										</p>
-										<p class="arrival-review pull-right">
-											<span class="lnr lnr-heart"></span>
-											<span class="lnr lnr-frame-expand"></span>
-										</p>
-									</div>
-								</div>
-								<h4><a href="#">arm chair</a></h4>
-								<p class="arrival-product-price">$90.00</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4">
-							<div class="single-new-arrival">
-								<div class="single-new-arrival-bg">
-									<img src="<%=request.getContextPath()%>/images/collection/arrivals8.png" alt="new-arrivals images">
-									<div class="single-new-arrival-bg-overlay"></div>
-									<div class="new-arrival-cart">
-										<p>
-											<span class="lnr lnr-cart"></span>
-											<a href="#">add <span>to </span> cart</a>
-										</p>
-										<p class="arrival-review pull-right">
-											<span class="lnr lnr-heart"></span>
-											<span class="lnr lnr-frame-expand"></span>
-										</p>
-									</div>
-								</div>
-								<h4><a href="#">wooden bed</a></h4>
-								<p class="arrival-product-price">$140.00</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div><!--/.container-->
-		
-		</section><!--/.new-arrivals-->
-		<!--new-arrivals end -->
-
-		<!--sofa-collection start -->
-		<section id="sofa-collection">
-			<div class="owl-carousel owl-theme" id="collection-carousel">
-				<div class="sofa-collection collectionbg1">
-					<div class="container">
-						<div class="sofa-collection-txt">
-							<h2>unlimited sofa collection</h2>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-							</p>
-							<div class="sofa-collection-price">
-								<h4>strting from <span>$ 199</span></h4>
-							</div>
-							<button class="btn-cart welcome-add-cart sofa-collection-btn" onclick="window.location.href='#'">
-								view more
-							</button>
-						</div>
-					</div>	
-				</div><!--/.sofa-collection-->
-				<div class="sofa-collection collectionbg2">
-					<div class="container">
-						<div class="sofa-collection-txt">
-							<h2>unlimited dainning table collection</h2>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-							</p>
-							<div class="sofa-collection-price">
-								<h4>strting from <span>$ 299</span></h4>
-							</div>
-							<button class="btn-cart welcome-add-cart sofa-collection-btn" onclick="window.location.href='#'">
-								view more
-							</button>
-						</div>
-					</div>
-				</div><!--/.sofa-collection-->
-			</div><!--/.collection-carousel-->
-
-		</section><!--/.sofa-collection-->
-		<!--sofa-collection end -->
-
-		<!--feature start -->
-		<section id="feature" class="feature">
-			<div class="container">
-				<div class="section-header">
-					<h2>featured products</h2>
-				</div><!--/.section-header-->
-				<div class="feature-content">
-					<div class="row">
-						<div class="col-sm-3">
-							<div class="single-feature">
-								<img src="<%=request.getContextPath()%>/images/features/f1.jpg" alt="feature image">
-								<div class="single-feature-txt text-center">
-									<p>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-										<span class="feature-review">(45 review)</span>
-									</p>
-									<h3><a href="#">designed sofa</a></h3>
-									<h5>$160.00</h5>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="single-feature">
-								<img src="<%=request.getContextPath()%>/images/features/f2.jpg" alt="feature image">
-								<div class="single-feature-txt text-center">
-									<p>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-										<span class="feature-review">(45 review)</span>
-									</p>
-									<h3><a href="#">dinning table </a></h3>
-									<h5>$200.00</h5>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="single-feature">
-								<img src="<%=request.getContextPath()%>/images/features/f3.jpg" alt="feature image">
-								<div class="single-feature-txt text-center">
-									<p>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-										<span class="feature-review">(45 review)</span>
-									</p>
-									<h3><a href="#">chair and table</a></h3>
-									<h5>$100.00</h5>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="single-feature">
-								<img src="<%=request.getContextPath()%>/images/features/f4.jpg" alt="feature image">
-								<div class="single-feature-txt text-center">
-									<p>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<span class="spacial-feature-icon"><i class="fa fa-star"></i></span>
-										<span class="feature-review">(45 review)</span>
-									</p>
-									<h3><a href="#">modern arm chair</a></h3>
-									<h5>$299.00</h5>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div><!--/.container-->
-
-		</section><!--/.feature-->
-		<!--feature end -->
-
-		<!--blog start -->
-		<section id="blog" class="blog">
-			<div class="container">
-				<div class="section-header">
-					<h2>latest blog</h2>
-				</div><!--/.section-header-->
-				<div class="blog-content">
-					<div class="row">
-						<div class="col-sm-4">
-							<div class="single-blog">
-								<div class="single-blog-img">
-									<img src="<%=request.getContextPath()%>/images/blog/b1.jpg" alt="blog image">
-									<div class="single-blog-img-overlay"></div>
-								</div>
-								<div class="single-blog-txt">
-									<h2><a href="#">Why Brands are Looking at Local Language</a></h2>
-									<h3>By <a href="#">Robert Norby</a> / 18th March 2018</h3>
-									<p>
-										Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.... 
-									</p>
+								<div class="col-sm-6">
+									<img src="<%=request.getContextPath() %>/images/home/girl3.jpg" class="girl img-responsive" alt="" />
+									<img src="images/home/pricing.png" class="pricing" alt="" />
 								</div>
 							</div>
 							
 						</div>
-						<div class="col-sm-4">
-							<div class="single-blog">
-								<div class="single-blog-img">
-									<img src="<%=request.getContextPath()%>/images/blog/b2.jpg" alt="blog image">
-									<div class="single-blog-img-overlay"></div>
-								</div>
-								<div class="single-blog-txt">
-									<h2><a href="#">Why Brands are Looking at Local Language</a></h2>
-									<h3>By <a href="#">Robert Norby</a> / 18th March 2018</h3>
-									<p>
-										Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.... 
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="single-blog">
-								<div class="single-blog-img">
-									<img src="<%=request.getContextPath()%>/images/blog/b3.jpg" alt="blog image">
-									<div class="single-blog-img-overlay"></div>
-								</div>
-								<div class="single-blog-txt">
-									<h2><a href="#">Why Brands are Looking at Local Language</a></h2>
-									<h3>By <a href="#">Robert Norby</a> / 18th March 2018</h3>
-									<p>
-										Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.... 
-									</p>
-								</div>
-							</div>
-						</div>
+						
+						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+							<i class="fa fa-angle-left"></i>
+						</a>
+						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+							<i class="fa fa-angle-right"></i>
+						</a>
 					</div>
+					
 				</div>
-			</div><!--/.container-->
-			
-		</section><!--/.blog-->
-		<!--blog end -->
-
-		<!-- clients strat -->
-		<section id="clients"  class="clients">
-			<div class="container">
-				<div class="owl-carousel owl-theme" id="client">
-						<div class="item">
-							<a href="#">
-								<img src="<%=request.getContextPath()%>/images/clients/c1.png" alt="brand-image" />
-							</a>
-						</div><!--/.item-->
-						<div class="item">
-							<a href="#">
-								<img src="<%=request.getContextPath()%>/images/clients/c2.png" alt="brand-image" />
-							</a>
-						</div><!--/.item-->
-						<div class="item">
-							<a href="#">
-								<img src="<%=request.getContextPath()%>/images/clients/c3.png" alt="brand-image" />
-							</a>
-						</div><!--/.item-->
-						<div class="item">
-							<a href="#">
-								<img src="<%=request.getContextPath()%>/images/clients/c4.png" alt="brand-image" />
-							</a>
-						</div><!--/.item-->
-						<div class="item">
-							<a href="#">
-								<img src="<%=request.getContextPath()%>/images/clients/c5.png" alt="brand-image" />
-							</a>
-						</div><!--/.item-->
-					</div><!--/.owl-carousel-->
-
-			</div><!--/.container-->
-
-		</section><!--/.clients-->	
-		<!-- clients end -->
-
-		<!--newsletter strat -->
-		<section id="newsletter"  class="newsletter">
-			<div class="container">
-				<div class="hm-footer-details">
-					<div class="row">
-						<div class=" col-md-3 col-sm-6 col-xs-12">
-							<div class="hm-footer-widget">
-								<div class="hm-foot-title">
-									<h4>information</h4>
-								</div><!--/.hm-foot-title-->
-								<div class="hm-foot-menu">
-									<ul>
-										<li><a href="#">about us</a></li><!--/li-->
-										<li><a href="#">contact us</a></li><!--/li-->
-										<li><a href="#">news</a></li><!--/li-->
-										<li><a href="#">store</a></li><!--/li-->
-									</ul><!--/ul-->
-								</div><!--/.hm-foot-menu-->
-							</div><!--/.hm-footer-widget-->
-						</div><!--/.col-->
-						<div class=" col-md-3 col-sm-6 col-xs-12">
-							<div class="hm-footer-widget">
-								<div class="hm-foot-title">
-									<h4>collections</h4>
-								</div><!--/.hm-foot-title-->
-								<div class="hm-foot-menu">
-									<ul>
-										<li><a href="#">wooden chair</a></li><!--/li-->
-										<li><a href="#">royal cloth sofa</a></li><!--/li-->
-										<li><a href="#">accent chair</a></li><!--/li-->
-										<li><a href="#">bed</a></li><!--/li-->
-										<li><a href="#">hanging lamp</a></li><!--/li-->
-									</ul><!--/ul-->
-								</div><!--/.hm-foot-menu-->
-							</div><!--/.hm-footer-widget-->
-						</div><!--/.col-->
-						<div class=" col-md-3 col-sm-6 col-xs-12">
-							<div class="hm-footer-widget">
-								<div class="hm-foot-title">
-									<h4>my accounts</h4>
-								</div><!--/.hm-foot-title-->
-								<div class="hm-foot-menu">
-									<ul>
-										<li><a href="#">my account</a></li><!--/li-->
-										<li><a href="#">wishlist</a></li><!--/li-->
-										<li><a href="#">Community</a></li><!--/li-->
-										<li><a href="#">order history</a></li><!--/li-->
-										<li><a href="#">my cart</a></li><!--/li-->
-									</ul><!--/ul-->
-								</div><!--/.hm-foot-menu-->
-							</div><!--/.hm-footer-widget-->
-						</div><!--/.col-->
-						<div class=" col-md-3 col-sm-6  col-xs-12">
-							<div class="hm-footer-widget">
-								<div class="hm-foot-title">
-									<h4>newsletter</h4>
-								</div><!--/.hm-foot-title-->
-								<div class="hm-foot-para">
-									<p>
-										Subscribe  to get latest news,update and information.
-									</p>
-								</div><!--/.hm-foot-para-->
-								<div class="hm-foot-email">
-									<div class="foot-email-box">
-										<input type="text" class="form-control" placeholder="Enter Email Here....">
-									</div><!--/.foot-email-box-->
-									<div class="foot-email-subscribe">
-										<span><i class="fa fa-location-arrow"></i></span>
-									</div><!--/.foot-email-icon-->
-								</div><!--/.hm-foot-email-->
-							</div><!--/.hm-footer-widget-->
-						</div><!--/.col-->
-					</div><!--/.row-->
-				</div><!--/.hm-footer-details-->
-
-			</div><!--/.container-->
-
-		</section><!--/newsletter-->	
-		<!--newsletter end -->
-
-		<!--footer start-->
-		<footer id="footer"  class="footer">
-			<div class="container">
-				<div class="hm-footer-copyright text-center">
-					<div class="footer-social">
-						<a href="#"><i class="fa fa-facebook"></i></a>	
-						<a href="#"><i class="fa fa-instagram"></i></a>
-						<a href="#"><i class="fa fa-linkedin"></i></a>
-						<a href="#"><i class="fa fa-pinterest"></i></a>
-						<a href="#"><i class="fa fa-behance"></i></a>	
+			</div>
+		</div>
+	</section><!--/slider-->
+	
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+						<h2>Category</h2>
+						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+											Sportswear
+										</a>
+									</h4>
+								</div>
+								<div id="sportswear" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul>
+											<li><a href="#">Nike </a></li>
+											<li><a href="#">Under Armour </a></li>
+											<li><a href="#">Adidas </a></li>
+											<li><a href="#">Puma</a></li>
+											<li><a href="#">ASICS </a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordian" href="#mens">
+											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+											Mens
+										</a>
+									</h4>
+								</div>
+								<div id="mens" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul>
+											<li><a href="#">Fendi</a></li>
+											<li><a href="#">Guess</a></li>
+											<li><a href="#">Valentino</a></li>
+											<li><a href="#">Dior</a></li>
+											<li><a href="#">Versace</a></li>
+											<li><a href="#">Armani</a></li>
+											<li><a href="#">Prada</a></li>
+											<li><a href="#">Dolce and Gabbana</a></li>
+											<li><a href="#">Chanel</a></li>
+											<li><a href="#">Gucci</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#accordian" href="#womens">
+											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+											Womens
+										</a>
+									</h4>
+								</div>
+								<div id="womens" class="panel-collapse collapse">
+									<div class="panel-body">
+										<ul>
+											<li><a href="#">Fendi</a></li>
+											<li><a href="#">Guess</a></li>
+											<li><a href="#">Valentino</a></li>
+											<li><a href="#">Dior</a></li>
+											<li><a href="#">Versace</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Kids</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Fashion</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Households</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Interiors</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Clothing</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Bags</a></h4>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="#">Shoes</a></h4>
+								</div>
+							</div>
+						</div><!--/category-products-->
+					
+						<div class="brands_products"><!--brands_products-->
+							<h2>Brands</h2>
+							<div class="brands-name">
+								<ul class="nav nav-pills nav-stacked">
+									<li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
+									<li><a href="#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>
+									<li><a href="#"> <span class="pull-right">(27)</span>Albiro</a></li>
+									<li><a href="#"> <span class="pull-right">(32)</span>Ronhill</a></li>
+									<li><a href="#"> <span class="pull-right">(5)</span>Oddmolly</a></li>
+									<li><a href="#"> <span class="pull-right">(9)</span>Boudestijn</a></li>
+									<li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
+								</ul>
+							</div>
+						</div><!--/brands_products-->
+						
+						<div class="price-range"><!--price-range-->
+							<h2>Price Range</h2>
+							<div class="well text-center">
+								 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+								 <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+							</div>
+						</div><!--/price-range-->
+						
+						<div class="shipping text-center"><!--shipping-->
+							<img src="images/home/shipping.jpg" alt="" />
+						</div><!--/shipping-->
+					
 					</div>
-					<p>
-						&copy;copyright. designed and developed by <a href="https://www.themesine.com/">themesine</a>
-					</p><!--/p-->
-				</div><!--/.text-center-->
-			</div><!--/.container-->
-
-			<div id="scroll-Top">
-				<div class="return-to-top">
-					<i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
 				</div>
 				
-			</div><!--/.scroll-Top-->
-			
-        </footer><!--/.footer-->
-		<!--footer end-->
-		
-		<!-- Include all js compiled plugins (below), or include individual files as needed -->
-
-		<script src="<%=request.getContextPath()%>/js/jquery.js"></script>
-        
-        <!--modernizr.min.js-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-		
-		<!--bootstrap.min.js-->
-        <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
-		
-		<!-- bootsnav js -->
-		<script src="<%=request.getContextPath()%>/js/bootsnav.js"></script>
-
-		<!--owl.carousel.js-->
-        <script src="<%=request.getContextPath()%>/js/owl.carousel.min.js"></script>
-
-
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-		
-        
-        <!--Custom JS-->
-        <script src="<%=request.getContextPath()%>/js/custom.js"></script>
-        
-    </body>
+				<div class="col-sm-9 padding-right">
+					<div class="features_items"><!--features_items-->
+						<h2 class="title text-center">Features Items</h2>
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+										<div class="productinfo text-center">
+											<img src="images/home/product1.jpg" alt="" />
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+										<div class="product-overlay">
+											<div class="overlay-content">
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+										</div>
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="images/home/product2.jpg" alt="" />
+										<h2>$56</h2>
+										<p>Easy Polo Black Edition</p>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									</div>
+									<div class="product-overlay">
+										<div class="overlay-content">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="images/home/product3.jpg" alt="" />
+										<h2>$56</h2>
+										<p>Easy Polo Black Edition</p>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									</div>
+									<div class="product-overlay">
+										<div class="overlay-content">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="images/home/product4.jpg" alt="" />
+										<h2>$56</h2>
+										<p>Easy Polo Black Edition</p>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									</div>
+									<div class="product-overlay">
+										<div class="overlay-content">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+									<img src="images/home/new.png" class="new" alt="" />
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="images/home/product5.jpg" alt="" />
+										<h2>$56</h2>
+										<p>Easy Polo Black Edition</p>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									</div>
+									<div class="product-overlay">
+										<div class="overlay-content">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+									<img src="images/home/sale.png" class="new" alt="" />
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="images/home/product6.jpg" alt="" />
+										<h2>$56</h2>
+										<p>Easy Polo Black Edition</p>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									</div>
+									<div class="product-overlay">
+										<div class="overlay-content">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+					</div><!--features_items-->
+					
+					<div class="category-tab"><!--category-tab-->
+						<div class="col-sm-12">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
+								<li><a href="#blazers" data-toggle="tab">Blazers</a></li>
+								<li><a href="#sunglass" data-toggle="tab">Sunglass</a></li>
+								<li><a href="#kids" data-toggle="tab">Kids</a></li>
+								<li><a href="#poloshirt" data-toggle="tab">Polo shirt</a></li>
+							</ul>
+						</div>
+						<div class="tab-content">
+							<div class="tab-pane fade active in" id="tshirt" >
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery1.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery2.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery3.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery4.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="tab-pane fade" id="blazers" >
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery4.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery3.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery2.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery1.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="tab-pane fade" id="sunglass" >
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery3.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery4.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery1.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery2.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="tab-pane fade" id="kids" >
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery1.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery2.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery3.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery4.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="tab-pane fade" id="poloshirt" >
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery2.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery4.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery3.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="product-image-wrapper">
+										<div class="single-products">
+											<div class="productinfo text-center">
+												<img src="images/home/gallery1.jpg" alt="" />
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><!--/category-tab-->
+					
+					<div class="recommended_items"><!--recommended_items-->
+						<h2 class="title text-center">recommended items</h2>
+						
+						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="item active">	
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="<%=request.getContextPath() %>/images/home/recommend1.jpg" alt="" />
+													<h2>$56</h2>
+													<p>Easy Polo Black Edition</p>
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="<%=request.getContextPath() %>/images/home/recommend2.jpg" alt="" />
+													<h2>$56</h2>
+													<p>Easy Polo Black Edition</p>
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="<%=request.getContextPath() %>/images/home/recommend3.jpg" alt="" />
+													<h2>$56</h2>
+													<p>Easy Polo Black Edition</p>
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item">	
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="<%=request.getContextPath() %>/images/home/recommend1.jpg" alt="" />
+													<h2>$56</h2>
+													<p>Easy Polo Black Edition</p>
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="<%=request.getContextPath() %>/images/home/recommend2.jpg" alt="" />
+													<h2>$56</h2>
+													<p>Easy Polo Black Edition</p>
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="<%=request.getContextPath() %>/images/home/recommend3.jpg" alt="" />
+													<h2>$56</h2>
+													<p>Easy Polo Black Edition</p>
+													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+								<i class="fa fa-angle-left"></i>
+							  </a>
+							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+								<i class="fa fa-angle-right"></i>
+							  </a>			
+						</div>
+					</div><!--/recommended_items-->
+					
+				</div>
+			</div>
+		</div>
+	</section>
 	
+	<footer id="footer"><!--Footer-->
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="companyinfo">
+							<h2><span>e</span>-shopper</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+						</div>
+					</div>
+					<div class="col-sm-7">
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="<%=request.getContextPath() %>/images/home/iframe1.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="<%=request.getContextPath() %>/images/home/iframe2.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="<%=request.getContextPath() %>/images/home/iframe3.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="<%=request.getContextPath() %>/images/home/iframe4.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="address">
+							<img src="<%=request.getContextPath() %>/images/home/map.png" alt="" />
+							<p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer-widget">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Service</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Online Help</a></li>
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Order Status</a></li>
+								<li><a href="#">Change Location</a></li>
+								<li><a href="#">FAQ’s</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Quock Shop</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">T-Shirt</a></li>
+								<li><a href="#">Mens</a></li>
+								<li><a href="#">Womens</a></li>
+								<li><a href="#">Gift Cards</a></li>
+								<li><a href="#">Shoes</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Policies</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Terms of Use</a></li>
+								<li><a href="#">Privecy Policy</a></li>
+								<li><a href="#">Refund Policy</a></li>
+								<li><a href="#">Billing System</a></li>
+								<li><a href="#">Ticket System</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>About Shopper</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Company Information</a></li>
+								<li><a href="#">Careers</a></li>
+								<li><a href="#">Store Location</a></li>
+								<li><a href="#">Affillate Program</a></li>
+								<li><a href="#">Copyright</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-3 col-sm-offset-1">
+						<div class="single-widget">
+							<h2>About Shopper</h2>
+							<form action="#" class="searchform">
+								<input type="text" placeholder="Your email address" />
+								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<p>Get the most recent updates from <br />our site and be updated your self...</p>
+							</form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+				</div>
+			</div>
+		</div>
+		
+	</footer><!--/Footer-->
+	
+
+  
+    <script src="<%=request.getContextPath() %>/js/jquery.js"></script>
+	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+	<script src="<%=request.getContextPath() %>/js/jquery.scrollUp.min.js"></script>
+	<script src="<%=request.getContextPath() %>/js/price-range.js"></script>
+    <script src="<%=request.getContextPath() %>/js/jquery.prettyPhoto.js"></script>
+    <script src="<%=request.getContextPath() %>/js/main.js"></script>
+</body>
 </html>
