@@ -19,4 +19,8 @@ public interface UserDao {
 	public int insertUserAccountInfo(Map<String, String> paramMap) throws Exception;
 
 	public String getUserNo() throws Exception;
+
+	public String chkPw(Map<String, String> paramMap) throws Exception;
+
+	public UserDto getUserInfo(Map<String, String> paramMap) throws Exception;
 }

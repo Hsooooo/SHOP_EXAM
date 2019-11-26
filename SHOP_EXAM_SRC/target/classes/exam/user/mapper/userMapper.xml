@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="exam.user.dao.UserDao">
 	<select id="userList" resultType="exam.user.dto.UserDto">
-		SELECT USER_NO AS user_no
-			 , USER_NAME AS user_name
-			 , USER_BIRTH AS user_birth
-			 , USER_JOIN_TYPE AS user_join_type
-			 , USER_REG_DATE AS user_reg_date
+		SELECT USER_NO 			AS user_no
+			 , USER_NAME 		AS user_name
+			 , USER_BIRTH 		AS user_birth
+			 , USER_JOIN_TYPE 	AS user_join_type
+			 , USER_REG_DATE 	AS user_reg_date
 		  FROM USER_BASIC_INFO
 	</select>
 	
@@ -24,20 +24,20 @@
 	
 	<insert id="insertBasicUserInfo" parameterType="java.util.Map">
 		INSERT INTO USER_BASIC_INFO(
-				USER_NO,
-				USER_NAME,
-				USER_BIRTH,
-				USER_JOIN_TYPE,
-				USER_REG_DATE,
-				USER_EMAIL
+			USER_NO,
+			USER_NAME,
+			USER_BIRTH,
+			USER_JOIN_TYPE,
+			USER_REG_DATE,
+			USER_EMAIL
 		)
 		VALUES(
-				#{userNo},
-				#{name, jdbcType=VARCHAR},
-				'19940110',
-				'W',
-				sysdate,
-				#{email, jdbcType=VARCHAR}
+			#{userNo},
+			#{name, jdbcType=VARCHAR},
+			'19940110',
+			'W',
+			sysdate,
+			#{email, jdbcType=VARCHAR}
 		)
 	</insert>
 	
@@ -77,5 +77,31 @@
 		SELECT SEQ_USER_BASIC_INFO.NEXTVAL FROM DUAL
 	</select>
 
+	<select id="chkPw" parameterType="java.util.Map" resultType="java.lang.String">
+		SELECT USER_PWD
+		  FROM USER_ACCOUNT_INFO
+		 WHERE USER_ID = #{id}
+	</select>
+	<select id="getUserInfo" parameterType="java.util.Map" resultType="exam.user.dto.UserDto">
+		SELECT UBI.USER_NO 			AS USER_NO
+			 , UBI.USER_NAME 		AS USER_NAME
+			 , UBI.USER_BIRTH		AS USER_BIRTH
+			 , UBI.USER_JOIN_TYPE	AS USER_JOIN_TYPE
+			 , TO_CHAR(UBI.USER_REG_DATE,'YYYYMMDD') AS USER_REG_DATE
+			 , UBI.USER_EMAIL		AS USER_EMAIL
+			 , UAI.USER_ID			AS USER_ID
+			 , UDA.USER_ADDR		AS USER_ADDR
+			 , UDA.ADDR_FLAG		AS ADDR_FLAG
+			 , UDA.USER_POST_CODE	AS USER_POST_CODE
+			 , UDA.USER_ADDR_DETAIL AS USER_ADDR_DETAIL
+		  FROM USER_BASIC_INFO 		UBI
+		     , USER_ACCOUNT_INFO 	UAI
+		     , USER_DELIVERY_ADDR 	UDA
+		 WHERE UAI.USER_ID = #{id}
+		   AND UAI.USER_NO = UBI.USER_NO
+		   AND UBI.USER_NO = UDA.USER_NO
+	</select>
+	
+	
 </mapper>
 

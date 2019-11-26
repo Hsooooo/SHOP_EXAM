@@ -13,4 +13,8 @@ public interface UserService {
 	public int idCheck(String id) throws Exception;
 
 	public int userReg(Map<String, String> paramMap) throws Exception;
+
+	public String chkPw(Map<String, String> paramMap) throws Exception;
+
+	public UserDto getUserInfo(Map<String, String> paramMap) throws Exception;
 }

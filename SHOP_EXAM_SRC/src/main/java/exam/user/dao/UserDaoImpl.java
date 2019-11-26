@@ -54,6 +54,16 @@ public class UserDaoImpl implements UserDao {
 		return (String)sqlSession.selectOne("getUserNo");
 	}
 
+	@Override
+	public String chkPw(Map<String, String> paramMap) throws Exception {
+		return (String)sqlSession.selectOne("chkPw", paramMap);
+	}
+
+	@Override
+	public UserDto getUserInfo(Map<String, String> paramMap) throws Exception {
+		return (UserDto)sqlSession.selectOne("getUserInfo", paramMap);
+	}
+
 	
 	
 

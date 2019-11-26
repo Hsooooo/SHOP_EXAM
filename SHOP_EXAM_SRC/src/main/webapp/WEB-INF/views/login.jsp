@@ -26,6 +26,34 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <script type="text/javascript">
+    function joinSubmit(){
+    	var email = $("#email").val();
+    	var name = $("#name").val();
+    	if(name == ''){
+    		alert("이름이 비어있습니다.");
+    		$("#name").focus();
+    	}else if(email == ''){
+    		alert("이메일이 비어있습니다.");
+    		$("#email").focus();
+    		
+    	}else if(emailCheck() == false){
+    		alert("이메일이 형식이 옳바르지 않습니다.");
+    		$("#email").focus();
+    	}else{
+    		$("#joinFrm").submit();
+    	}
+    }
+    
+    function emailCheck() {
+		var email = document.getElementById("email").value;
+		var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		if(exptext.test(email)==false){
+			return false;
+		}
+	}
+    
+    </script>
 </head><!--/head-->
 
 <body>
@@ -61,7 +89,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+							<a href="/exam/home.do"><img src="images/home/logo.png" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right clearfix">
 							<div class="btn-group">
@@ -153,9 +181,9 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>Login to your account</h2>
-						<form action="/exam/loginAf.do">
-							<input type="text" placeholder="ID or EMAIL" />
-							<input type="password" placeholder="PW" />
+						<form action="/exam/loginAf.do" method="POST">
+							<input type="text" placeholder="ID or EMAIL" id="id" name="id"/>
+							<input type="password" placeholder="PW"  id="pw" name="pw"/>
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Keep me signed in
@@ -170,10 +198,10 @@
 				<div class="col-sm-4">
 					<div class="signup-form"><!--sign up form-->
 						<h2>New User Signup!</h2>
-						<form action="/exam/join.do" method="post">
+						<form action="/exam/join.do" method="post" id="joinFrm">
 							<input type="text" id="name" name="name" placeholder="Name"/>
 							<input type="email" id="email" name="email"placeholder="Email Address"/>
-							<button type="submit" class="btn btn-default">Signup</button>
+							<button type="button" class="btn btn-default" onClick="joinSubmit()">Signup</button>
 						</form>
 					</div><!--/sign up form-->
 				</div>

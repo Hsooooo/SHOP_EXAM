@@ -53,4 +53,15 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public String chkPw(Map<String, String> paramMap) throws Exception {
+		// TODO Auto-generated method stub
+		return userDao.chkPw(paramMap);
+	}
+
+	@Override
+	public UserDto getUserInfo(Map<String, String> paramMap) throws Exception {
+		return userDao.getUserInfo(paramMap);
+	}
+
 }
