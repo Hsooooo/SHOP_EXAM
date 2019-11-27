@@ -1,56 +1,76 @@
-<?xml version="1.0" encoding="UTF-8"?>  
-<beans xmlns="http://www.springframework.org/schema/beans"  
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"             xmlns:p="http://www.springframework.org/schema/p"  
-    xmlns:context="http://www.springframework.org/schema/context"  
-    xmlns:mvc="http://www.springframework.org/schema/mvc"  
-    xsi:schemaLocation="http://www.springframework.org/schema/beans    
-                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd    
-                        http://www.springframework.org/schema/context    
-                        http://www.springframework.org/schema/context/spring-context-3.1.xsd    
-                        http://www.springframework.org/schema/mvc    
-                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
-		
-    <bean id="propertyConfigurer"  
-        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
-        <property name="location" value="classpath:jdbc.properties" />  
-    </bean>  
-  
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  
-        destroy-method="close">  
-        <property name="driverClassName" value="${driver}" />  
-        <property name="url" value="${url}" />  
-        <property name="username" value="${username}" />  
-        <property name="password" value="${password}" />  
-       
-        <property name="initialSize" value="${initialSize}"></property>  
-      
-        <property name="maxActive" value="${maxActive}"></property>  
-     
-        <property name="maxIdle" value="${maxIdle}"></property>  
-    
-        <property name="minIdle" value="${minIdle}"></property>  
- 
-        <property name="maxWait" value="${maxWait}"></property>  
-    </bean>  
-  
- 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
-        <property name="dataSource" ref="dataSource" ></property>
-      
-        <property name="mapperLocations" value="classpath*:exam/**/mapper/*.xml"></property>  
-    </bean>  
-  
-  	
-  
-   
-   <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"> 
-   		<constructor-arg index="0" ref="sqlSessionFactory"/> 
-   </bean>
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
-  
-      
-    <bean id="transactionManager"  
-        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
-        <property name="dataSource" ref="dataSource" />  
-    </bean>
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+
+		<property name="initialSize" value="${initialSize}"></property>
+
+		<property name="maxActive" value="${maxActive}"></property>
+
+		<property name="maxIdle" value="${maxIdle}"></property>
+
+		<property name="minIdle" value="${minIdle}"></property>
+
+		<property name="maxWait" value="${maxWait}"></property>
+	</bean>
+
+
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+
+		<property name="mapperLocations"
+			value="classpath*:exam/**/mapper/*.xml"></property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<bean id="sqlSessionTemplate"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<!-- <aop:config proxy-target-class="true">
+
+		<aop:pointcut id="servicePublicMethod"
+			expression="execution(* exam..*.*(..))" />
+
+		<aop:advisor advice-ref="txAdvice"
+			pointcut-ref="servicePublicMethod" />
+
+	</aop:config>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" rollback-for="SQLSyntaxErrorException"/>
+		</tx:attributes>
+	</tx:advice> -->
+	<context:component-scan base-package="exam.user.dao"></context:component-scan>
+	<context:component-scan base-package="exam.user.service"></context:component-scan>
+	
 </beans>

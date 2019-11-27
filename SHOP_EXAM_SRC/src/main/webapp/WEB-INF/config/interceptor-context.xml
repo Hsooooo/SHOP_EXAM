@@ -18,12 +18,6 @@
 			<beans:bean id="loggerInterceptor"
 				class="exam.common.logger.LoggerInterceptor"></beans:bean>
 		</mvc:interceptor>
-		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-			<beans:bean id="sessionInterceptor"
-				class="exam.common.interceptor.SessionInterceptor">
-			</beans:bean>
-		</mvc:interceptor>
 	</mvc:interceptors>
 	<beans:bean
 		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />

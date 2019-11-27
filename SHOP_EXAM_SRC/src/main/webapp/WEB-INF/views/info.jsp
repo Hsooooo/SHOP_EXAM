@@ -26,6 +26,12 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <style type="text/css">
+    .brands-name .nav-stacked li a:hover{
+    	color: #fe980f;
+    	background: white;
+    }
+    </style>
 <%
 	UserDto userDto = (UserDto)session.getAttribute("userDto");
 	if(userDto == null){
@@ -39,6 +45,7 @@
 	}
 	
 %>    
+
 </head><!--/head-->
 
 <body>

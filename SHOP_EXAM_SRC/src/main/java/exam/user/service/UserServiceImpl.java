@@ -1,11 +1,20 @@
 package exam.user.service;
 
+import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.TransactionIsolationLevel;
+import org.apache.ibatis.transaction.Transaction;
+import org.apache.ibatis.transaction.TransactionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionInterceptor;
 
 import exam.user.dao.UserDao;
 import exam.user.dto.UserDto;
@@ -15,6 +24,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserDao userDao;
+	
 	
 	@Override
 	public List<UserDto> userList() throws Exception {
@@ -36,6 +46,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public int userReg(Map<String, String> paramMap) throws Exception {
+		
 		String userNo = userDao.getUserNo();
 		paramMap.put("userNo", userNo);
 		int returnCnt = 0;
