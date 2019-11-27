@@ -72,5 +72,6 @@
 	</tx:advice> -->
 	<context:component-scan base-package="exam.user.dao"></context:component-scan>
 	<context:component-scan base-package="exam.user.service"></context:component-scan>
-	
+	<context:component-scan base-package="exam.shop.dao"></context:component-scan>
+	<context:component-scan base-package="exam.shop.service"></context:component-scan>
 </beans>

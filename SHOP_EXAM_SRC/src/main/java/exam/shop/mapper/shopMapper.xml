@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="exam.shop.dao.ShopDao">
+	
+	<select id="getBigDivList" resultType="exam.shop.dto.ShopMenuDto">
+		SELECT BDIV_NO AS bDivNo
+			 , BDIV_NAME AS bDivName
+			 , ORDER_NO AS bDivOrder
+		  FROM SY_MENU_BIG_DIV
+		ORDER BY ORDER_NO ASC
+	</select>
+	
+	<select id="getSmallDivList" resultType="exam.shop.dto.ShopMenuDto">
+		SELECT BDIV_NO AS bDivNo
+			 , SDIV_NAME AS sDivName
+			 , ORDER_NO AS bDivOrder
+			 , SDIV_PATH AS sDivPath
+		  FROM SY_MENU_SML_DIV
+		ORDER BY ORDER_NO ASC
+	</select>
+</mapper>
+
