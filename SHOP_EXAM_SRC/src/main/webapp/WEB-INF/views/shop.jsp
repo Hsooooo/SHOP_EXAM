@@ -35,6 +35,9 @@
 	@SuppressWarnings("unchecked")
 	List<ShopMenuDto> smlDivList = (List<ShopMenuDto>)request.getAttribute("smlDivList");
 %>    
+
+
+
 </head><!--/head-->
 
 <body>
@@ -176,9 +179,9 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-								
-										<a data-toggle="collapse" data-parent="#accordian" href="#<%=bigDivList.get(i).getbDivName()%>">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+										<input type="hidden" id="h<%=bigDivList.get(i).getbDivNo() %>" value="0"/>
+										<a id="<%=bigDivList.get(i).getbDivNo() %>" data-toggle="collapse" data-parent="#accordian" href="#<%=bigDivList.get(i).getbDivName()%>">
+											<span class="badge pull-right"><i id="i<%=bigDivList.get(i).getbDivNo() %>" class="fa fa-plus"></i></span>
 											<%=bigDivList.get(i).getbDivName() %>
 										</a>
 									</h4>
@@ -199,6 +202,7 @@
 										</ul>
 									</div>
 								</div>	
+								<input type="hidden" id="menuClickFlag" value="">
 							</div>
 							<%
 							} %>
@@ -725,5 +729,34 @@
 	<script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript">
+		$("a").click(function(){
+			var id = $(this).attr("id");
+			 if($("#menuClickFlag").val() != id){
+				var tmp = $("#menuClickFlag").val();
+				$("#i"+tmp).addClass("fa-plus");
+				
+				$("#i"+tmp).removeClass("fa-minus");
+			}
+			
+			
+			if($("#h"+id).val() == '0'){
+				$("#h"+id).val("1");
+				$("#i"+id).addClass("fa-minus");
+	
+				$("#i"+id).removeClass("fa-plus");
+				$("#menuClickFlag").val(id);
+	
+			}else{
+				$("#h"+id).val("0");
+				$("#i"+id).addClass("fa-plus");
+				
+				$("#i"+id).removeClass("fa-minus");
+				$("#menuClickFlag").val(id);
+			}
+		});
+	
+	
+	</script>
 </body>
 </html>
