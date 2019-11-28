@@ -67,29 +67,31 @@ public class AdminController {
 		try {
 			Map<String, String> basicPrdMap = new HashMap<String, String>();
 			
-			String prdt_name = (String)request.getParameter("prdt_name");
-			String prdt_warn = (String)request.getParameter("prdt_warn");
-			String prdt_amt = (String)request.getParameter("prdt_amt");
-			String prdt_price = (String)request.getParameter("prdt_price");
-			String prdt_type = (String)request.getParameter("prdt_type");
-			String bDivCode = (String)request.getParameter("bDivCode");
-			String sDivCode = (String)request.getParameter("sDivCode");
+			String prdt_name 	= (String)request.getParameter("prdt_name");
+			String prdt_warn 	= (String)request.getParameter("prdt_warn");
+			String prdt_amt 	= (String)request.getParameter("prdt_amt");
+			String prdt_price	= (String)request.getParameter("prdt_price");
+			String prdt_type 	= (String)request.getParameter("prdt_type");
+			String bDivCode 	= (String)request.getParameter("bDivCode");
+			String sDivCode 	= (String)request.getParameter("sDivCode");
 			
-			basicPrdMap.put("prdt_name",prdt_name);
-			basicPrdMap.put("prdt_warn",prdt_warn);
-			basicPrdMap.put("prdt_amt",prdt_amt);
-			basicPrdMap.put("prdt_price",prdt_price);
-			basicPrdMap.put("prdt_type",prdt_type);
-			basicPrdMap.put("bDiv_code",bDivCode);
-			basicPrdMap.put("sDiv_code",sDivCode);
+			//파라미터 세팅
+			basicPrdMap.put("prdt_name",	prdt_name);
+			basicPrdMap.put("prdt_warn",	prdt_warn);
+			basicPrdMap.put("prdt_amt",		prdt_amt);
+			basicPrdMap.put("prdt_price",	prdt_price);
+			basicPrdMap.put("prdt_type",	prdt_type);
+			basicPrdMap.put("bDiv_code",	bDivCode);
+			basicPrdMap.put("sDiv_code",	sDivCode);
 			//임시
-			basicPrdMap.put("prdt_brand","나이키");
+			basicPrdMap.put("prdt_brand",	"나이키");
 			
 			MultipartHttpServletRequest multiReq = (MultipartHttpServletRequest) request;
 			Iterator<String> iter = multiReq.getFileNames();
 			MultipartFile mFile = null;
 			String fieldName = "";
-			List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+			
+			
 			
 			File dir = new File(imgPath);
 			if(!dir.isDirectory()) {
@@ -100,6 +102,7 @@ public class AdminController {
 			
 			List<Map<String, String>> picListMap = new ArrayList<Map<String, String>>();
 			
+			//제품 번호 생성 Algorithm
 			String tmpNo = String.format("%07d",Integer.parseInt(adminService.getPrdtNo()));
 			String prdtNo = bDivCode + sDivCode + tmpNo;
 			log.info("[Product Number]>>"+ prdtNo);
@@ -108,8 +111,6 @@ public class AdminController {
 				fieldName = (String) iter.next();
 				mFile = multiReq.getFile(fieldName);
 				if(mFile.isEmpty() == false) {
-					
-					
 					log.info("[Field Name]>>" + fieldName);
 					String originName;
 					originName = new String(mFile.getOriginalFilename().getBytes("8859_1"), "UTF-8");
@@ -139,7 +140,7 @@ public class AdminController {
 						picMap.put("prdt_no",prdtNo);
 						picListMap.add(picMap);
 					}
-					resultList.add(file);
+					
 				}
 			}
 			
