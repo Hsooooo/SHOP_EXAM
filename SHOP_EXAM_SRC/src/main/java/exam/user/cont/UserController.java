@@ -21,6 +21,7 @@ import exam.user.dto.UserDto;
 import exam.user.service.UserService;
 
 @Controller
+@RequestMapping("/exam")
 public class UserController {
 	private Logger log = LoggerFactory.getLogger(getClass());
 

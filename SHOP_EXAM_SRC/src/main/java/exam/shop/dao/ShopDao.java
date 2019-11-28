@@ -19,5 +19,7 @@ public interface ShopDao {
 	 * @throws Exception
 	 */
 	public List<ShopMenuDto> getSmallDivList() throws Exception;
+
+	
 	
 }

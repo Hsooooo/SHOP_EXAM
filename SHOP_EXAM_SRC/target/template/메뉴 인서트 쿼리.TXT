@@ -1,15 +1,18 @@
-INSERT INTO SY_MENU_BIG_DIV VALUES('000100','의류','0');
-INSERT INTO SY_MENU_BIG_DIV VALUES('000200','전자기기','1');
-INSERT INTO SY_MENU_BIG_DIV VALUES('000300','생활용품','2');
-INSERT INTO SY_MENU_BIG_DIV VALUES('000400','문구','3');
+INSERT INTO SY_MENU_BIG_DIV VALUES('000100','의류','0','W');
+INSERT INTO SY_MENU_BIG_DIV VALUES('000200','전자기기','1','E');
+INSERT INTO SY_MENU_BIG_DIV VALUES('000300','생활용품','2','L');
+INSERT INTO SY_MENU_BIG_DIV VALUES('000400','문구','3','F');
 
-INSERT INTO SY_MENU_SML_DIV VALUES('000100','상의','0','/exam/shopWear.do','top');
-INSERT INTO SY_MENU_SML_DIV VALUES('000100','하의','1','/exam/shopWear.do','bottom');
-INSERT INTO SY_MENU_SML_DIV VALUES('000100','신발','2','/exam/shopWear.do','shoes');
-INSERT INTO SY_MENU_SML_DIV VALUES('000200','모니터','0','/exam/shopElec.do','monitor');
-INSERT INTO SY_MENU_SML_DIV VALUES('000200','주변기기','1','/exam/shopElec.do','perip');
-INSERT INTO SY_MENU_SML_DIV VALUES('000200','본체','2','/exam/shopElec.do','cpMain');
-INSERT INTO SY_MENU_SML_DIV VALUES('000300','청소용품','0','/exam/shopLife.do','cleanTool');
-INSERT INTO SY_MENU_SML_DIV VALUES('000300','생활잡화','1','/exam/shopLife.do','lifeEtcTool');
-INSERT INTO SY_MENU_SML_DIV VALUES('000400','다이어리','0','/exam/shopStationery.do','diary');
-INSERT INTO SY_MENU_SML_DIV VALUES('000400','필기류','1','/exam/shopStationery.do','pencil');
+INSERT INTO SY_MENU_SML_DIV VALUES('000100','상의','0','/exam/shopWear.do','top','TP');
+INSERT INTO SY_MENU_SML_DIV VALUES('000100','하의','1','/exam/shopWear.do','bottom','BT');
+INSERT INTO SY_MENU_SML_DIV VALUES('000100','신발','2','/exam/shopWear.do','shoes','SE');
+INSERT INTO SY_MENU_SML_DIV VALUES('000200','모니터','0','/exam/shopElec.do','monitor','MT');
+INSERT INTO SY_MENU_SML_DIV VALUES('000200','주변기기','1','/exam/shopElec.do','perip','PR');
+INSERT INTO SY_MENU_SML_DIV VALUES('000200','본체','2','/exam/shopElec.do','cpMain','CM');
+INSERT INTO SY_MENU_SML_DIV VALUES('000300','청소용품','0','/exam/shopLife.do','cleanTool','CT');
+INSERT INTO SY_MENU_SML_DIV VALUES('000300','생활잡화','1','/exam/shopLife.do','lifeEtcTool','LE');
+INSERT INTO SY_MENU_SML_DIV VALUES('000400','다이어리','0','/exam/shopStationery.do','diary','DA');
+INSERT INTO SY_MENU_SML_DIV VALUES('000400','필기류','1','/exam/shopStationery.do','pencil','PE');
+
+CREATE SEQUENCE SEQ_USER_BASIC_INFO;
+CREATE SEQUENCE SEQ_PRDT_BASIC_INFO;

@@ -5,6 +5,7 @@
 		SELECT BDIV_NO AS bDivNo
 			 , BDIV_NAME AS bDivName
 			 , ORDER_NO AS bDivOrder
+			 , BDIV_CODE AS bDivCode
 		  FROM SY_MENU_BIG_DIV
 		ORDER BY ORDER_NO ASC
 	</select>
@@ -14,6 +15,7 @@
 			 , SDIV_NAME AS sDivName
 			 , ORDER_NO AS bDivOrder
 			 , SDIV_PATH AS sDivPath
+			 , SDIV_CODE AS sDivCode
 		  FROM SY_MENU_SML_DIV
 		ORDER BY ORDER_NO ASC
 	</select>

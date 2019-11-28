@@ -8,8 +8,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	
 	<mvc:annotation-driven></mvc:annotation-driven>
-	<context:component-scan base-package="exam.*.cont">
-	</context:component-scan>
+	<context:component-scan base-package="exam.*.cont"/>
+	<context:component-scan base-package="admin.*.cont"/>
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
@@ -22,9 +22,15 @@
     	<property name="contentType" value="application/json;charset=UTF-8"/>
 	</bean>
 
-
+	<context:property-placeholder location="/WEB-INF/config/*.properties"/> 
 	<mvc:resources location="/resources/" mapping="resources/**"/>
+	<mvc:resources location="/img/**" mapping="C:/exam_git/SHOP_EXAM/SHOP_EXAM_SRC/src/main/resources/img"/>
 	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="52428800"/>
+		
+		<property name="defaultEncoding" value="utf-8"/>
+	</bean>
 	
 </beans>
 

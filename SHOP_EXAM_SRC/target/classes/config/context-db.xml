@@ -14,8 +14,15 @@
 
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:jdbc.properties" />
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties </value>
+				<value>classpath:path.properties </value>
+			</list>
+		</property>
 	</bean>
+	
+
 
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
@@ -41,7 +48,7 @@
 		<property name="dataSource" ref="dataSource"></property>
 
 		<property name="mapperLocations"
-			value="classpath*:exam/**/mapper/*.xml"></property>
+			value="classpath*:*/**/mapper/*.xml"></property>
 	</bean>
 
 	<bean id="transactionManager"
@@ -74,4 +81,6 @@
 	<context:component-scan base-package="exam.user.service"></context:component-scan>
 	<context:component-scan base-package="exam.shop.dao"></context:component-scan>
 	<context:component-scan base-package="exam.shop.service"></context:component-scan>
+	<context:component-scan base-package="admin.user.dao"></context:component-scan>
+	<context:component-scan base-package="admin.user.service"></context:component-scan>
 </beans>

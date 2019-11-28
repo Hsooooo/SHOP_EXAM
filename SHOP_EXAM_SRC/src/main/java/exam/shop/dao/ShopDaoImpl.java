@@ -29,4 +29,5 @@ public class ShopDaoImpl implements ShopDao {
 		return sqlSession.selectList("getSmallDivList");
 	}
 
+	
 }

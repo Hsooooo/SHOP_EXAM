@@ -18,4 +18,6 @@ public interface ShopService {
 	 * @throws Exception
 	 */
 	public List<ShopMenuDto> getSmallDivList() throws Exception;
+	
+	
 }

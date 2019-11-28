@@ -7,6 +7,8 @@ public class ShopMenuDto {
 	private String sDivName;
 	private String sDivOrder;
 	private String sDivPath;
+	private String sDivCode;
+	private String bDivCode;
 	public String getbDivNo() {
 		return bDivNo;
 	}
@@ -42,6 +44,18 @@ public class ShopMenuDto {
 	}
 	public void setsDivPath(String sDivPath) {
 		this.sDivPath = sDivPath;
+	}
+	public String getsDivCode() {
+		return sDivCode;
+	}
+	public void setsDivCode(String sDivCode) {
+		this.sDivCode = sDivCode;
+	}
+	public String getbDivCode() {
+		return bDivCode;
+	}
+	public void setbDivCode(String bDivCode) {
+		this.bDivCode = bDivCode;
 	}
 	
 	
