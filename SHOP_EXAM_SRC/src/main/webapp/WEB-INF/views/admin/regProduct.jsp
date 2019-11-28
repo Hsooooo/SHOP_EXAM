@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ page import="exam.shop.dto.ShopMenuDto"  %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -37,10 +37,10 @@ $(document).ready(function(){
 
 function fn_fileAdd(){
 	if(g_count == 10){
-		alert("ÃÖ´ë 10°³ ±îÁö");
+		alert("ìµœëŒ€ 10ê°œ ê¹Œì§€");
 		return;
 	}
-	var str = "<tr><td></td><td><input type='file' name='prdt_pic_"+(g_count++)+"'/></td></tr>";
+	var str = "<tr><td></td><td><input type='file' name='prdt_pic_"+(g_count++)+"' id='prdt_pic_"+(g_count -1)+"'/></td></tr>";
 	$("#productTb > tbody:last").append(str);
 }
 
@@ -52,19 +52,19 @@ function fn_fileAdd(){
 	<table id="productTb">
 		<tbody>
 			<tr>
-				<td>»óÇ°¸í</td>
+				<td>ìƒí’ˆëª…</td>
 				<td><input type="text" id="prdt_name" name="prdt_name"></td>
 			</tr>
 			<tr>
-				<td>»óÇ° ¼³¸í »çÁø</td>
+				<td>ìƒí’ˆ ì„¤ëª… ì‚¬ì§„</td>
 				<td><input type="file" id="prdt_desc_pic" name="prdt_desc_pic"></td>
 			</tr>
 			
 			<tr>
-				<td>»óÇ° ´ëºĞ·ù</td>
+				<td>ìƒí’ˆ ëŒ€ë¶„ë¥˜</td>
 				<td>
 					<select id="bDivCode" name="bDivCode">
-						<option value="">¼±ÅÃ</option>
+						<option value="">ì„ íƒ</option>
 						<%
 						for(ShopMenuDto dto : bigDivList){
 							%>
@@ -76,10 +76,10 @@ function fn_fileAdd(){
 				</td>
 			</tr>
 			<tr>
-				<td>»óÇ° ¼ÒºĞ·ù</td>
+				<td>ìƒí’ˆ ì†Œë¶„ë¥˜</td>
 				<td>
 					<select id="sDivCode" name="sDivCode">
-						<option value="">¼±ÅÃ</option>
+						<option value="">ì„ íƒ</option>
 						<%
 						for(ShopMenuDto dto : smlDivList){
 							%>
@@ -91,38 +91,38 @@ function fn_fileAdd(){
 				</td>
 			</tr>
 			<tr>
-				<td>»óÇ° Å¸ÀÔ</td>
+				<td>ìƒí’ˆ íƒ€ì…</td>
 				<td>
 					<select id="prdt_type" name="prdt_type">
-						<option value="">¼±ÅÃ</option>
-						<option value="1">½Å»ó</option>				
-						<option value="2">±¸Á¦</option>
+						<option value="">ì„ íƒ</option>
+						<option value="1">ì‹ ìƒ</option>				
+						<option value="2">êµ¬ì œ</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td>»óÇ° ÁÖÀÇ»çÇ×</td>
+				<td>ìƒí’ˆ ì£¼ì˜ì‚¬í•­</td>
 				<td><textarea id="prdt_warn" name="prdt_warn"></textarea></td>
 			</tr>
 			<tr>
-				<td>»óÇ° ¼ö·®</td>
+				<td>ìƒí’ˆ ìˆ˜ëŸ‰</td>
 				<td><input type="text" name="prdt_amt" id="prdt_amt"></td>
 			</tr>
 			<tr>
-				<td>»óÇ° °¡°İ</td>
+				<td>ìƒí’ˆ ê°€ê²©</td>
 				<td><input type="text" name="prdt_price" id="prdt_price"></td>
 			</tr>
 			<tr>
-				<td>ºê·£µå</td>
+				<td>ë¸Œëœë“œ</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td>»óÇ° »çÁø</td>
+				<td>ìƒí’ˆ ì‚¬ì§„</td>
 				<td><input type="file" id="prdt_pic_1" name="prdt_pic_1"><button type="button" id="addBtn" name="addBtn">+</button><button type="button" id="delBtn" name="delBtn">-</button></td>
 			</tr>
 		</tbody>
 	</table>
-	<button type="submit">È®ÀÎ</button>
+	<button type="submit">í™•ì¸</button>
 </form>
 </body>
 </html>

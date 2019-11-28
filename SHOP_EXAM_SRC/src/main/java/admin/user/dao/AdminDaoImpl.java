@@ -1,5 +1,7 @@
 package admin.user.dao;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,6 +19,18 @@ public class AdminDaoImpl implements AdminDao {
 	public String getPrdtNo() throws Exception {
 		
 		return sqlSession.selectOne("getPrdtNo");
+	}
+
+	@Override
+	public int insertPrdtBasicInfo(Map<String, String> basicPrdMap) throws Exception {
+		
+		return sqlSession.insert("insertPrdtBasicInfo", basicPrdMap);
+	}
+
+	@Override
+	public int insertPrdPicInfo(Map<String, String> map) throws Exception {
+		
+		return sqlSession.insert("insertPrdPicInfo", map);
 	}
 
 }

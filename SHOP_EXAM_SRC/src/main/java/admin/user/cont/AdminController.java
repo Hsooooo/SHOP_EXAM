@@ -31,8 +31,10 @@ import exam.shop.service.ShopService;
 public class AdminController {
 	private Logger log = LoggerFactory.getLogger(getClass());
 	
-	//@Value("${img.path}")
-	private final String imgPath = "C:\\exam_git\\SHOP_EXAM\\SHOP_EXAM_SRC\\src\\main\\resources\\img";
+	//home Dir
+	private final String imgPath = "C:\\git_workspace\\git\\SHOP_EXAM\\SHOP_EXAM_SRC\\src\\main\\resources\\img";
+	//comp Dir
+	//private final String imgPath = "C:\\exam_git\\SHOP_EXAM\\SHOP_EXAM_SRC\\src\\main\\resources\\img";
 	@Autowired
 	private ShopService shopService;
 	
@@ -78,6 +80,10 @@ public class AdminController {
 			basicPrdMap.put("prdt_amt",prdt_amt);
 			basicPrdMap.put("prdt_price",prdt_price);
 			basicPrdMap.put("prdt_type",prdt_type);
+			basicPrdMap.put("bDiv_code",bDivCode);
+			basicPrdMap.put("sDiv_code",sDivCode);
+			//임시
+			basicPrdMap.put("prdt_brand","나이키");
 			
 			MultipartHttpServletRequest multiReq = (MultipartHttpServletRequest) request;
 			Iterator<String> iter = multiReq.getFileNames();
@@ -91,12 +97,18 @@ public class AdminController {
 			}
 			Map<String, Object> file = new HashMap<String, Object>();
 			
-			Map<String, String> picMap = new HashMap<String, String>();
+			
 			List<Map<String, String>> picListMap = new ArrayList<Map<String, String>>();
+			
+			String tmpNo = String.format("%07d",Integer.parseInt(adminService.getPrdtNo()));
+			String prdtNo = bDivCode + sDivCode + tmpNo;
+			log.info("[Product Number]>>"+ prdtNo);
+			
 			while(iter.hasNext()) {
-				mFile = multiReq.getFile( iter.next());
+				fieldName = (String) iter.next();
+				mFile = multiReq.getFile(fieldName);
 				if(mFile.isEmpty() == false) {
-					fieldName = (String) iter.next();
+					
 					
 					log.info("[Field Name]>>" + fieldName);
 					String originName;
@@ -118,22 +130,26 @@ public class AdminController {
 					String serverPath = "http://localhost:8080/img/";
 					String realPath = serverPath + saveFileName;
 					if(fieldName.contains("prdt_desc")) {
+						log.info("###############설명 사진 ON###############");
 						basicPrdMap.put("prdt_desc_pic",realPath);
 					}else {
+						Map<String, String> picMap = new HashMap<String, String>();
+						log.info("###############제품 사진 ON###############");
 						picMap.put("pic_path",realPath);
+						picMap.put("prdt_no",prdtNo);
 						picListMap.add(picMap);
 					}
 					resultList.add(file);
 				}
 			}
 			
-			String tmpNo = String.format("%07d",Integer.parseInt(adminService.getPrdtNo()));
-			String prdtNo = bDivCode + sDivCode + tmpNo;
-			log.info("[Product Number]>>"+ prdtNo);
+			
+			basicPrdMap.put("prdt_no", prdtNo);
+			adminService.insertPrdt(basicPrdMap, picListMap);
 			
 			
 		}catch(Exception e) {
-			log.error(e.getMessage());
+			e.printStackTrace();
 		}
 		return "";
 	}

@@ -16,3 +16,11 @@ INSERT INTO SY_MENU_SML_DIV VALUES('000400','필기류','1','/exam/shopStationer
 
 CREATE SEQUENCE SEQ_USER_BASIC_INFO;
 CREATE SEQUENCE SEQ_PRDT_BASIC_INFO;
+CREATE SEQUENCE SEQ_PRDT_PIC_INFO;
+
+구동전 server.xml -> Context Path 확인할것(if /exam -> /)
+					 <Context docBase="C:\git_workspace\git\SHOP_EXAM\SHOP_EXAM_SRC\src\main\resources\img" path="/img" reloadable="true"/> 경로 맞춰줄것
+					 
+구동전 확인사항
+- server.xml
+- action-context.xml					 

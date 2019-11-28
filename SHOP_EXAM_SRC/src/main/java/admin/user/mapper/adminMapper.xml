@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin.user.dao.AdminDao">
 	
-	<!-- <insert id="insertPrdtBasicInfo" parameterType="java.util.Map">
-		
-	</insert> -->
+	<insert id="insertPrdtBasicInfo" parameterType="java.util.Map">
+		INSERT INTO PRDT_BASIC_INFO(
+			  PRDT_NO
+			, PRDT_TYPE
+			, PRDT_REG_DATE
+			, BDIV_CODE
+			, SDIV_CODE
+			, PRDT_NAME
+			, PRDT_WARN
+			, PRDT_DESC_PIC
+			, PRDT_AMT
+			, PRDT_PRICE
+			, PRDT_BRAND
+		)
+		VALUES(
+			  #{prdt_no}
+			, #{prdt_type}
+			, SYSDATE
+			, #{bDiv_code}
+			, #{sDiv_code}
+			, #{prdt_name}
+			, #{prdt_warn}
+			, #{prdt_desc_pic}
+			, #{prdt_amt}
+			, #{prdt_price}
+			, #{prdt_brand}
+		)
+	</insert>
+	
+	<insert id="insertPrdPicInfo" parameterType="java.util.Map">
+		INSERT INTO PRDT_PIC_INFO(
+			  PRDT_PIC_NO
+			, PRDT_NO
+			, PIC_PATH
+			, PIC_REG_DATE
+			, PIC_MAIN_FLAG
+		)
+		VALUES(
+			  SEQ_PRDT_PIC_INFO.NEXTVAL
+			, #{prdt_no}
+			, #{pic_path}
+			, SYSDATE
+			, #{pic_main_flag}
+		)
+	</insert>
 	
 	<select id="getPrdtNo" resultType="java.lang.String">
 		SELECT SEQ_PRDT_BASIC_INFO.NEXTVAL FROM DUAL

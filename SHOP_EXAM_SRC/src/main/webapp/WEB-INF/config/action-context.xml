@@ -24,7 +24,12 @@
 
 	<context:property-placeholder location="/WEB-INF/config/*.properties"/> 
 	<mvc:resources location="/resources/" mapping="resources/**"/>
-	<mvc:resources location="/img/**" mapping="C:/exam_git/SHOP_EXAM/SHOP_EXAM_SRC/src/main/resources/img"/>
+	
+	<!--home Dir-->
+	<mvc:resources location="/img/**" mapping="C:\git_workspace\git\SHOP_EXAM\SHOP_EXAM_SRC\src\main\resources\img"/>
+	<!--Comp Dir-->
+	<!-- <mvc:resources location="/img/**" mapping="C:/exam_git/SHOP_EXAM/SHOP_EXAM_SRC/src/main/resources/img"/> -->
+	
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="52428800"/>
