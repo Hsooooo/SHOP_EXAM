@@ -32,9 +32,9 @@ public class AdminController {
 	private Logger log = LoggerFactory.getLogger(getClass());
 	
 	//home Dir
-	private final String imgPath = "C:\\git_workspace\\git\\SHOP_EXAM\\SHOP_EXAM_SRC\\src\\main\\resources\\img";
+	//private final String imgPath = "C:\\git_workspace\\git\\SHOP_EXAM\\SHOP_EXAM_SRC\\src\\main\\resources\\img";
 	//comp Dir
-	//private final String imgPath = "C:\\exam_git\\SHOP_EXAM\\SHOP_EXAM_SRC\\src\\main\\resources\\img";
+	private final String imgPath = "C:\\exam_git\\SHOP_EXAM\\SHOP_EXAM_SRC\\src\\main\\resources\\img";
 	@Autowired
 	private ShopService shopService;
 	
@@ -150,9 +150,13 @@ public class AdminController {
 			
 			
 		}catch(Exception e) {
-			e.printStackTrace();
+			request.setAttribute("result_message", 	"제품 등록 오류");
+			request.setAttribute("result_link", 	"/admin/regProduct.do");
+			return "common/result";
 		}
-		return "";
+		request.setAttribute("result_message", 	"제품 등록 성공");
+		request.setAttribute("result_link", 	"/admin/main.do");
+		return "common/result";
 	}
 	
 	

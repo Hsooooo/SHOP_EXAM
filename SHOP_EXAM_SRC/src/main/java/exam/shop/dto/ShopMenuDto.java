@@ -9,6 +9,7 @@ public class ShopMenuDto {
 	private String sDivPath;
 	private String sDivCode;
 	private String bDivCode;
+	private String sDivParam;
 	public String getbDivNo() {
 		return bDivNo;
 	}
@@ -56,6 +57,12 @@ public class ShopMenuDto {
 	}
 	public void setbDivCode(String bDivCode) {
 		this.bDivCode = bDivCode;
+	}
+	public String getsDivParam() {
+		return sDivParam;
+	}
+	public void setsDivParam(String sDivParam) {
+		this.sDivParam = sDivParam;
 	}
 	
 	

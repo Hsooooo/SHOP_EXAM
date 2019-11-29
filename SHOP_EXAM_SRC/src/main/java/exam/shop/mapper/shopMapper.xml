@@ -16,8 +16,43 @@
 			 , ORDER_NO AS bDivOrder
 			 , SDIV_PATH AS sDivPath
 			 , SDIV_CODE AS sDivCode
+			 , SDIV_PATH_PARAM AS SDIVPARAM 
 		  FROM SY_MENU_SML_DIV
 		ORDER BY ORDER_NO ASC
+	</select>
+	
+	<select id="getProductList" resultType="exam.shop.dto.ProductBasicDto">
+		SELECT PRDT_NO
+			 , PRDT_TYPE
+			 , BDIV_CODE
+			 , SDIV_CODE
+			 , PRDT_NAME
+			 , PRDT_WARN
+			 , PRDT_DESC_PIC
+			 , PRDT_AMT
+			 , PRDT_PRICE
+			 , PRDT_BRAND
+			 , PIC_PATH
+		  FROM (SELECT a.*, ROWNUM AS RN
+				  FROM (SELECT PBI.PRDT_NO
+							 , PBI.PRDT_TYPE
+							 , PBI.BDIV_CODE
+							 , PBI.SDIV_CODE
+							 , PBI.PRDT_NAME
+							 , PBI.PRDT_WARN
+							 , PBI.PRDT_DESC_PIC
+							 , PBI.PRDT_AMT
+							 , PBI.PRDT_PRICE
+							 , PBI.PRDT_BRAND
+							 , PPI.PIC_PATH
+						  FROM PRDT_BASIC_INFO PBI
+						     , PRDT_PIC_INFO PPI
+						 WHERE PBI.PRDT_NO = PPI.PRDT_NO
+						   AND PPI.PIC_MAIN_FLAG = '1'
+						ORDER BY PBI.PRDT_REG_DATE ASC
+				   		) a
+		   		)
+		<![CDATA[WHERE RN > #{startNum} AND RN <= #{endNum}]]>
 	</select>
 </mapper>
 
