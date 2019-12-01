@@ -52,7 +52,16 @@
 						ORDER BY PBI.PRDT_REG_DATE ASC
 				   		) a
 		   		)
-		<![CDATA[WHERE RN > #{startNum} AND RN <= #{endNum}]]>
+		WHERE rn between#{pageBegin} AND #{pageEnd}
+	</select>
+	
+	<select id="getProductListCnt" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		  FROM PRDT_BASIC_INFO PBI
+		  	 , PRDT_PIC_INFO PPI
+		 WHERE PBI.PRDT_NO = PPI.PRDT_NO
+		   AND PPI.PIC_MAIN_FLAG = '1'
+		ORDER BY PBI.PRDT_REG_DATE ASC
 	</select>
 </mapper>
 

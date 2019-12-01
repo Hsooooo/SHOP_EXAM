@@ -529,7 +529,7 @@
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
-									<div class="productinfo text-center">
+									< <div class="productinfo text-center">
 										<img src="<%=request.getContextPath()%>/images/home/product1.jpg" alt="" />
 										<h2>$56</h2>
 										<p>Easy Polo Black Edition</p>
@@ -552,13 +552,35 @@
 							</div>
 						</div>
 						
-						<ul class="pagination">
-							<li class="active"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">&raquo;</a></li>
-						</ul>
+						
 					</div><!--features_items-->
+					<ul class="pagination">
+						<c:if test="${pageMaker.curBlock >1 }">
+							<li><a href="shopWear.do?page=1&perPageNum=10">&laquo;</a></li>
+						</c:if>
+						<c:if test="${pageMaker.curBlock >1 }">
+							<li><a href="shopWear.do?page=${pageMaker.prevPage }&perPageNum=10">&lt;</a></li>
+						</c:if>
+						<c:forEach var="num" begin="${pageMaker.blockBegin }" end="${pageMaker.blockEnd }">
+							<c:choose>
+								<c:when test="${num == pageMaker.page }">
+									<li class="active"><a href="shopWear.do?page=${num }&perPageNum=10">${num }</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="shopWear.do?page=${num }&perPageNum=10">${num }</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${pageMaker.curBlock < pageMaker.totBlock }">
+							<li><a href="shopWear.do?page=${pageMaker.nextPage }&perPageNum=10">&gt;</a></li>
+							<li><a href="shopWear.do?page=${pageMaker.nextPage }&perPageNum=10">&raquo;</a></li>
+						</c:if> 
+						 
+						<!-- <li class="active"><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">&raquo;</a></li> -->
+					</ul>
 				</div>
 			</div>
 		</div>

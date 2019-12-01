@@ -1,7 +1,9 @@
 package exam.shop.service;
 
 import java.util.List;
+import java.util.Map;
 
+import exam.shop.dto.ProductBasicDto;
 import exam.shop.dto.ShopMenuDto;
 
 public interface ShopService {
@@ -19,5 +21,7 @@ public interface ShopService {
 	 */
 	public List<ShopMenuDto> getSmallDivList() throws Exception;
 	
+	public int getProductListCnt(Map<String, String> paramMap) throws Exception;
 	
+	public List<ProductBasicDto> getProductList(Map<String, String> paramMap) throws Exception;
 }

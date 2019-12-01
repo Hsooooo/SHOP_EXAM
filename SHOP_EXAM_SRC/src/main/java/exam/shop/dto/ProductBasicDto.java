@@ -11,6 +11,7 @@ public class ProductBasicDto {
 	private String prdt_amt;
 	private String prdt_price;
 	private String prdt_brand;
+	private String pic_path;
 	public String getPrdt_no() {
 		return prdt_no;
 	}
@@ -70,6 +71,12 @@ public class ProductBasicDto {
 	}
 	public void setPrdt_brand(String prdt_brand) {
 		this.prdt_brand = prdt_brand;
+	}
+	public String getPic_path() {
+		return pic_path;
+	}
+	public void setPic_path(String pic_path) {
+		this.pic_path = pic_path;
 	}
 	
 	
