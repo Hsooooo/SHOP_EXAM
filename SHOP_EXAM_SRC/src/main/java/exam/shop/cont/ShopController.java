@@ -62,22 +62,9 @@ public class ShopController {
 		int pageEnd=pageBegin + pageDiv-1;
 		log.info("param>>" + param);
 		
-		
-		
-		//paramMap.put("pageBegin", ""+pageBegin);
-		//paramMap.put("pageEnd", ""+pageEnd);
 		log.info("param>>" + paramMap.toString());
-		/*
-		 * String tmpPageDiv = ("".equals(""+pageDiv) || "0".equals(""+pageDiv))? ""+
-		 * 10: ""+pageDiv; String tmpCurrPage = ("".equals(""+currPage) ||
-		 * "0".equals(""+currPage))? ""+ "1": ""+currPage; int startRow = (currPage-1)*
-		 * pageDiv; paramMap.put("startNum", ""+startRow); paramMap.put("endNum",
-		 * ""+(startRow + pageDiv));
-		 * 
-		 * request.setAttribute("currPage", currPage); request.setAttribute("pageDiv",
-		 * pageDiv);
-		 */
-		//페이징 처리 확인할것
+		
+		paramMap.put("param", param);
 		try {
 			pageMaker.setTotPage(shopService.getProductListCnt(paramMap));
 			paramMap.put("pageBegin", ""+pageMaker.getPageBegin());
@@ -96,5 +83,28 @@ public class ShopController {
 		}
 		
 		return "shopWear";
+	}
+	
+	@RequestMapping(value="productDetail.do", method=RequestMethod.GET)
+	public String productDetail(HttpServletRequest request) {
+		String prdtNo = request.getParameter("prdtNo");
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("prdtNo",prdtNo);
+		try {
+			List<ShopMenuDto> bigDivMenuList = shopService.getBigDivList();
+			List<ShopMenuDto> smlDivMenuList = shopService.getSmallDivList();
+			
+			request.setAttribute("bigDivList", bigDivMenuList);
+			request.setAttribute("smlDivList", smlDivMenuList);
+			List<String> picList = shopService.getProductDetailPicList(paramMap);
+			ProductBasicDto productDto = shopService.getProductDetail(paramMap);
+			request.setAttribute("picList", picList);
+			request.setAttribute("productDto", productDto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "productDetail";
 	}
 }

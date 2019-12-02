@@ -3,6 +3,7 @@
     <%@ page import="exam.shop.dto.ShopMenuDto"  %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="admin.user.dto.BrandDto" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,9 @@
 
 	@SuppressWarnings("unchecked")
 	List<ShopMenuDto> smlDivList = (List<ShopMenuDto>)request.getAttribute("smlDivList");
+	
+	@SuppressWarnings("unchecked")
+	List<BrandDto> brandList = (List<BrandDto>)request.getAttribute("brandList");
 %>  
 
 <script src="<%=request.getContextPath() %>/js/jquery.js">
@@ -114,7 +118,18 @@ function fn_fileAdd(){
 			</tr>
 			<tr>
 				<td>브랜드</td>
-				<td></td>
+				<td>
+				<select id="brandNo" name="brandNo">
+						<option value="">선택</option>
+						<%
+						for(BrandDto dto : brandList){
+							%>
+							<option value="<%=dto.getBrand_no() %>"><%=dto.getBrand_name() %></option>
+							<%
+						}
+						%>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>상품 사진</td>

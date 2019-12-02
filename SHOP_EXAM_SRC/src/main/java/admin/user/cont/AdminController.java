@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import admin.user.dto.BrandDto;
 import admin.user.service.AdminService;
 import exam.shop.dao.ShopDao;
 import exam.shop.dto.ShopMenuDto;
@@ -51,9 +52,11 @@ public class AdminController {
 		try {
 			List<ShopMenuDto> bigDivList = shopService.getBigDivList();
 			List<ShopMenuDto> smlDivList = shopService.getSmallDivList();
+			List<BrandDto> brandList = adminService.getBrandList();
 			
 			request.setAttribute("bigDivList", bigDivList);
 			request.setAttribute("smlDivList", smlDivList);
+			request.setAttribute("brandList", brandList);
 		}catch (Exception e) {
 			
 		}
@@ -74,6 +77,7 @@ public class AdminController {
 			String prdt_type 	= (String)request.getParameter("prdt_type");
 			String bDivCode 	= (String)request.getParameter("bDivCode");
 			String sDivCode 	= (String)request.getParameter("sDivCode");
+			String brandNo		= (String)request.getParameter("brandNo");
 			
 			//파라미터 세팅
 			basicPrdMap.put("prdt_name",	prdt_name);
@@ -83,8 +87,8 @@ public class AdminController {
 			basicPrdMap.put("prdt_type",	prdt_type);
 			basicPrdMap.put("bDiv_code",	bDivCode);
 			basicPrdMap.put("sDiv_code",	sDivCode);
-			//임시
-			basicPrdMap.put("prdt_brand",	"나이키");
+			basicPrdMap.put("brand_no",		brandNo);
+			
 			
 			MultipartHttpServletRequest multiReq = (MultipartHttpServletRequest) request;
 			Iterator<String> iter = multiReq.getFileNames();

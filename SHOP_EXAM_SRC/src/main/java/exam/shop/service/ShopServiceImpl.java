@@ -36,6 +36,18 @@ public class ShopServiceImpl implements ShopService {
 		// TODO Auto-generated method stub
 		return shopDao.getProductList(paramMap);
 	}
+
+	@Override
+	public List<String> getProductDetailPicList(Map<String, String> paramMap) throws Exception {
+		// TODO Auto-generated method stub
+		return shopDao.getProductDetailPicList(paramMap);
+	}
+
+	@Override
+	public ProductBasicDto getProductDetail(Map<String, String> paramMap) throws Exception {
+		// TODO Auto-generated method stub
+		return shopDao.getProductDetail(paramMap);
+	}
 	
 	
 }

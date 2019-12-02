@@ -13,7 +13,7 @@
 			, PRDT_DESC_PIC
 			, PRDT_AMT
 			, PRDT_PRICE
-			, PRDT_BRAND
+			, BRAND_NO
 		)
 		VALUES(
 			  #{prdt_no}
@@ -26,7 +26,7 @@
 			, #{prdt_desc_pic}
 			, #{prdt_amt}
 			, #{prdt_price}
-			, #{prdt_brand}
+			, #{brand_no}
 		)
 	</insert>
 	
@@ -49,6 +49,11 @@
 	
 	<select id="getPrdtNo" resultType="java.lang.String">
 		SELECT SEQ_PRDT_BASIC_INFO.NEXTVAL FROM DUAL
+	</select>
+	<select id="getBrandList" resultType="admin.user.dto.BrandDto">
+		SELECT BRAND_NO
+			 , BRAND_NAME
+		  FROM BRAND_INFO
 	</select>
 </mapper>
 

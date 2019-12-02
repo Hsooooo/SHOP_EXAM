@@ -24,4 +24,8 @@ public interface ShopService {
 	public int getProductListCnt(Map<String, String> paramMap) throws Exception;
 	
 	public List<ProductBasicDto> getProductList(Map<String, String> paramMap) throws Exception;
+
+	public List<String> getProductDetailPicList(Map<String, String> paramMap) throws Exception;
+
+	public ProductBasicDto getProductDetail(Map<String, String> paramMap) throws Exception;
 }

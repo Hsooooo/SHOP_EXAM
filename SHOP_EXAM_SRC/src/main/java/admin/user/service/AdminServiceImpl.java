@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import admin.user.dao.AdminDao;
+import admin.user.dto.BrandDto;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -35,6 +36,12 @@ public class AdminServiceImpl implements AdminService {
 			adminDao.insertPrdPicInfo(picListMap.get(i));
 		}
 		
+	}
+
+	@Override
+	public List<BrandDto> getBrandList() throws Exception {
+		// TODO Auto-generated method stub
+		return adminDao.getBrandList();
 	}
 
 }

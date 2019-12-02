@@ -1,3 +1,4 @@
+<%@page import="exam.common.util.CommonUtil"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,6 +6,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="exam.shop.dto.ProductBasicDto"  %>
+<%@ page import="exam.user.dto.UserDto" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +31,18 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=request.getContextPath()%>/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=request.getContextPath()%>/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/images/ico/apple-touch-icon-57-precomposed.png">
+    
 <%
+	UserDto userDto = (UserDto)session.getAttribute("userDto");
+	if(userDto == null){
+		userDto = new UserDto();
+		%>
+		<script type="text/javascript">
+			alert("로그인이 필요한 서비스입니다.");
+			location.href = "/exam/home.do";
+		</script>
+		<%
+	}
 	@SuppressWarnings("unchecked")
 	List<ShopMenuDto> bigDivList = (List<ShopMenuDto>)request.getAttribute("bigDivList");
 
@@ -41,8 +54,32 @@
 	
 	int productListCnt = (Integer)request.getAttribute("productListCnt");
 	
+	String param = request.getParameter("param");
 %>    
-
+<script>
+	function addCart(prdtNo){
+		
+		$.ajax({
+			type : 'POST',
+			data : prdtNo,
+			url : '/cart/addCart.do',
+			dataType : 'json',
+			contentType : 'application/json; charset=UTF-8',
+			success : function(data){
+				if(data.flag == 0){
+					alert("이미 장바구니에 넣은 아이템입니다.");
+				}else{
+					alert("장바구니에 담겼습니다.");
+				}
+			},
+			error : function(error){
+				alert("error : " + error);
+			}
+			
+		
+		});
+	}
+</script>
 
 
 </head><!--/head-->
@@ -80,7 +117,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="<%=request.getContextPath()%>/images/home/logo.png" alt="" /></a>
+							<a href="/exam/home.do"><img src="<%=request.getContextPath() %>/images/home/logo.png" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right clearfix">
 							<div class="btn-group">
@@ -106,17 +143,22 @@
 							</div>
 						</div>
 					</div>
+					<!-- 공통 -->
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
-								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="/exam/info.do"><i class="fa fa-user"></i> INFO</a></li>
+								<li><a href=""><i class="fa fa-star"></i> Wish List</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<%if(userDto.getUser_no() == null){ %>
+								<li><a href="/exam/login.do"><i class="fa fa-lock"></i> LogIn</a></li>
+								<%}else {%>
+								<li><a href="/exam/logout.do"><i class="fa fa-lock"></i> LogOut</a></li>
+								<%} %>
 							</ul>
 						</div>
 					</div>
+					<!-- // -->
 				</div>
 			</div>
 		</div><!--/header-middle-->
@@ -136,15 +178,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Home</a></li>
-								<li class="dropdown"><a href="#" class="active">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html" class="active">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
+								<li ><a class="active" href="/exam/shop.do">Shop</a></li>
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
@@ -152,7 +186,7 @@
                                     </ul>
                                 </li> 
 								<li><a href="404.html">404</a></li>
-								<li><a href="contact-us.html">Contact</a></li>
+								<li><a href="contact-us.html" class="active">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -162,8 +196,8 @@
 						</div>
 					</div>
 				</div>
-				</div>
 			</div>
+		</div><!--/header-bottom-->
 	</header>
 	
 	<section id="advertisement">
@@ -257,9 +291,11 @@
 										<div class="productinfo text-center">
 											<div class="productinfo text-center">
 												<a href="/exam/productDetail.do?prdtNo=<%=productList.get(i).getPrdt_no()%>"><img src="<%=productList.get(i).getPic_path() %>" alt="" /></a>
-												<h2>\<%=productList.get(i).getPrdt_price() %></h2>
+												<h2>&#8361;<%=CommonUtil.objCommaFormat(productList.get(i).getPrdt_price()) %></h2>
 												<p><%=productList.get(i).getPrdt_name() %></p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<p style="font-size:11px;"><%=productList.get(i).getPrdt_brand() %></p>
+												<a href="javascript:void(0)" onClick="addCart('<%=productList.get(i).getPrdt_no() %>')" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<%-- <a href="javascript:void(0)" onClick="javascript:alert('<%=productList.get(i).getPrdt_no() %>')">테스트</a> --%>
 											</div>
 										</div>
 									</div>
@@ -276,24 +312,24 @@
 					</div><!--features_items-->
 					<ul class="pagination">
 						<c:if test="${pageMaker.curBlock >1 }">
-							<li><a href="shopWear.do?page=1&perPageNum=9">&laquo;</a></li>
+							<li><a href="shopWear.do?param=<%=param%>&page=1&perPageNum=9">&laquo;</a></li>
 						</c:if>
 						<c:if test="${pageMaker.curBlock >1 }">
-							<li><a href="shopWear.do?page=${pageMaker.prevPage }&perPageNum=9">&lt;</a></li>
+							<li><a href="shopWear.do?param=<%=param%>&page=${pageMaker.prevPage }&perPageNum=9">&lt;</a></li>
 						</c:if>
 						<c:forEach var="num" begin="${pageMaker.blockBegin }" end="${pageMaker.blockEnd }">
 							<c:choose>
 								<c:when test="${num == pageMaker.page }">
-									<li class="active"><a href="shopWear.do?page=${num }&perPageNum=9">${num }</a></li>
+									<li class="active"><a href="shopWear.do?param=<%=param%>&page=${num }&perPageNum=9">${num }</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a href="shopWear.do?page=${num }&perPageNum=9">${num }</a></li>
+									<li><a href="shopWear.do?param=<%=param%>&page=${num }&perPageNum=9">${num }</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${pageMaker.curBlock < pageMaker.totBlock }">
-							<li><a href="shopWear.do?page=${pageMaker.nextPage }&perPageNum=9">&gt;</a></li>
-							<li><a href="shopWear.do?page=${pageMaker.nextPage }&perPageNum=9">&raquo;</a></li>
+							<li><a href="shopWear.do?param=<%=param%>&page=${pageMaker.nextPage }&perPageNum=9">&gt;</a></li>
+							<li><a href="shopWear.do?param=<%=param%>&page=${pageMaker.nextPage }&perPageNum=9">&raquo;</a></li>
 						</c:if> 
 						 
 						<!-- <li class="active"><a href="">1</a></li>

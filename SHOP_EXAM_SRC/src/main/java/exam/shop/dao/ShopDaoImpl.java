@@ -43,5 +43,17 @@ public class ShopDaoImpl implements ShopDao {
 		return sqlSession.selectList("getProductList", paramMap);
 	}
 
+	@Override
+	public List<String> getProductDetailPicList(Map<String, String> paramMap) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("getProductDetailPicList", paramMap);
+	}
+
+	@Override
+	public ProductBasicDto getProductDetail(Map<String, String> paramMap) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("getProductDetail", paramMap);
+	}
+
 	
 }

@@ -43,12 +43,15 @@
 							 , PBI.PRDT_DESC_PIC
 							 , PBI.PRDT_AMT
 							 , PBI.PRDT_PRICE
-							 , PBI.PRDT_BRAND
+							 , BI.BRAND_NAME AS PRDT_BRAND
 							 , PPI.PIC_PATH
 						  FROM PRDT_BASIC_INFO PBI
 						     , PRDT_PIC_INFO PPI
+						     , BRAND_INFO BI
 						 WHERE PBI.PRDT_NO = PPI.PRDT_NO
+						   AND BI.BRAND_NO = PBI.BRAND_NO
 						   AND PPI.PIC_MAIN_FLAG = '1'
+						   AND PBI.SDIV_CODE = #{param}
 						ORDER BY PBI.PRDT_REG_DATE ASC
 				   		) a
 		   		)
@@ -61,7 +64,31 @@
 		  	 , PRDT_PIC_INFO PPI
 		 WHERE PBI.PRDT_NO = PPI.PRDT_NO
 		   AND PPI.PIC_MAIN_FLAG = '1'
+		   AND PBI.SDIV_CODE = #{param}
 		ORDER BY PBI.PRDT_REG_DATE ASC
+	</select>
+	
+	<select id="getProductDetailPicList" parameterType="java.util.Map" resultType="java.lang.String">
+		SELECT PIC_PATH
+		  FROM PRDT_PIC_INFO
+		 WHERE PRDT_NO = #{prdtNo}
+	</select>
+	
+	<select id="getProductDetail" parameterType="java.util.Map" resultType="exam.shop.dto.ProductBasicDto">
+		SELECT PBI.PRDT_NO
+			 , PBI.PRDT_TYPE
+			 , PBI.BDIV_CODE
+			 , PBI.SDIV_CODE
+			 , PBI.PRDT_NAME
+			 , PBI.PRDT_WARN
+			 , PBI.PRDT_DESC_PIC
+			 , PBI.PRDT_AMT
+			 , PBI.PRDT_PRICE
+			 , BI.BRAND_NAME AS PRDT_BRAND
+		  FROM PRDT_BASIC_INFO PBI
+		     , BRAND_INFO BI
+		 WHERE BI.BRAND_NO = PBI.BRAND_NO
+		   AND PRDT_NO = #{prdtNo}
 	</select>
 </mapper>
 
