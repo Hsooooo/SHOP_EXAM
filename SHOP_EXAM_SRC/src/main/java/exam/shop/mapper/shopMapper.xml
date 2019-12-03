@@ -90,5 +90,7 @@
 		 WHERE BI.BRAND_NO = PBI.BRAND_NO
 		   AND PRDT_NO = #{prdtNo}
 	</select>
+	
+	
 </mapper>
 

@@ -4,6 +4,8 @@
 <%@ page import="exam.shop.dto.ShopMenuDto"  %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="exam.shop.dto.ProductBasicDto"  %>
+<%@ page import="exam.user.dto.UserDto" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +31,16 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=request.getContextPath()%>/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/images/ico/apple-touch-icon-57-precomposed.png">
 <%
+	UserDto userDto = (UserDto)session.getAttribute("userDto");
+	if(userDto == null){
+		userDto = new UserDto();
+		%>
+		<script type="text/javascript">
+			alert("로그인이 필요한 서비스입니다.");
+			location.href = "/exam/home.do";
+		</script>
+		<%
+	}
 	@SuppressWarnings("unchecked")
 	List<ShopMenuDto> bigDivList = (List<ShopMenuDto>)request.getAttribute("bigDivList");
 
@@ -99,17 +111,22 @@
 							</div>
 						</div>
 					</div>
+					<!-- 공통 -->
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
-								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="/exam/info.do"><i class="fa fa-user"></i> INFO</a></li>
+								<li><a href=""><i class="fa fa-star"></i> Wish List</a></li>
+								<li><a href="/cart/cartList.do"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<%if(userDto.getUser_no() == null){ %>
+								<li><a href="/exam/login.do"><i class="fa fa-lock"></i> LogIn</a></li>
+								<%}else {%>
+								<li><a href="/exam/logout.do"><i class="fa fa-lock"></i> LogOut</a></li>
+								<%} %>
 							</ul>
 						</div>
 					</div>
+					<!-- // -->
 				</div>
 			</div>
 		</div><!--/header-middle-->
@@ -129,15 +146,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Home</a></li>
-								<li class="dropdown"><a href="#" class="active">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html" class="active">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
+								<li ><a class="active" href="/exam/shop.do">Shop</a></li>
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
@@ -155,8 +164,8 @@
 						</div>
 					</div>
 				</div>
-				</div>
 			</div>
+		</div><!--/header-bottom-->
 	</header>
 	
 	<section id="advertisement">

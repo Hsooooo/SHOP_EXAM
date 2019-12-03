@@ -13,14 +13,42 @@
 			,	PRDT_NO
 			,	USER_NO
 			,	CART_REG_DATE
+			,	BUY_STATUS
 		)
 		VALUES(
 				SEQ_USER_CART_BUY_INFO.NEXTVAL
 			,	#{prdtNo}
 			,	#{userNo}
 			,	SYSDATE
+			,	'0'
 		)
 	</insert>
-	
+	<select id="getUserCartList" parameterType="java.util.Map" resultType="exam.cart.dto.CartDto">
+		SELECT UCBI.CART_NO			AS CART_NO
+			 , UCBI.PRDT_NO			AS PRDT_NO
+			 , UCBI.USER_NO			AS USER_NO
+			 , UCBI.CART_REG_DATE	AS CART_REG_DATE
+			 , UCBI.BUY_DATE		AS BUY_DATE
+			 , UCBI.BUY_TOOL		AS BUY_TOOL
+			 , UCBI.BUY_STATUS		AS BUY_STATUS
+			 , UCBI.DELIVERY_NO		AS DELIVERY_NO
+			 , PPI.PIC_PATH			AS PIC_PATH
+			 , PBI.PRDT_NAME		AS PRDT_NAME
+			 , PBI.PRDT_PRICE		AS PRDT_PRICE
+		  FROM USER_CART_BUY_INFO UCBI
+		  	 , PRDT_PIC_INFO PPI
+		  	 , PRDT_BASIC_INFO PBI
+		 WHERE UCBI.PRDT_NO = PPI.PRDT_NO
+		   AND UCBI.PRDT_NO = PBI.PRDT_NO
+		   AND UCBI.USER_NO = #{userNo}
+		   AND UCBI.BUY_STATUS = '0' 
+		   AND PPI.PIC_MAIN_FLAG = '1'
+	</select>
+	<select id="getUserCartListCnt" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT count(*)
+		  FROM USER_CART_BUY_INFO
+		 WHERE USER_NO = #{userNo}
+		   AND BUY_STATUS = '0' 
+	</select>
 </mapper>
 

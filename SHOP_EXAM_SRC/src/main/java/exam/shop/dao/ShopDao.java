@@ -3,6 +3,7 @@ package exam.shop.dao;
 import java.util.List;
 import java.util.Map;
 
+import exam.cart.dto.CartDto;
 import exam.shop.dto.ProductBasicDto;
 import exam.shop.dto.ShopMenuDto;
 
@@ -29,5 +30,7 @@ public interface ShopDao {
 	public List<String> getProductDetailPicList(Map<String, String> paramMap) throws Exception;
 
 	public ProductBasicDto getProductDetail(Map<String, String> paramMap) throws Exception;
+	
+	
 	
 }

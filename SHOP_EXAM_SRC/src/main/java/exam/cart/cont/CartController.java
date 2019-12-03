@@ -1,9 +1,12 @@
 package exam.cart.cont;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import exam.cart.dto.CartDto;
 import exam.cart.service.CartService;
 import exam.user.dto.UserDto;
 
@@ -56,9 +60,30 @@ public class CartController {
 			log.error("에러 >" + e.getMessage());
 			
 		}
-		
-		
-		
 		return mv;
+	}
+	
+	
+	@RequestMapping(value="cartList.do")
+	public String cartList(HttpServletRequest request, HttpServletResponse response) {
+		Map<String, String> paramMap = new HashMap<String, String>();
+		try {
+			UserDto dto = (UserDto)request.getSession().getAttribute("userDto");
+			if(dto == null) {
+				response.sendRedirect("/exam/login.do");
+			}
+			paramMap.put("userNo",dto.getUser_no());
+			int cnt = cartService.getUserCartListCnt(paramMap);
+			if(cnt > 0) {
+				List<CartDto> cartList = cartService.getUserCartList(paramMap);
+				request.setAttribute("cartList", cartList);
+			}
+			request.setAttribute("cartListCnt", cnt);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		
+		
+		return "cart";
 	}
 }

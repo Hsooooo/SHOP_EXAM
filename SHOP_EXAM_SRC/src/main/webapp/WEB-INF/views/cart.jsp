@@ -1,7 +1,13 @@
+<%@page import="exam.common.util.CommonUtil"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="exam.shop.dto.ShopMenuDto"  %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="exam.shop.dto.ProductBasicDto"  %>
 <%@ page import="exam.user.dto.UserDto" %>
+<%@ page import="exam.cart.dto.CartDto" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Contact | E-Shopper</title>
+    <title>Shop | E-Shopper</title>
     <link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath() %>/css/font-awesome.min.css" rel="stylesheet">
     <link href="<%=request.getContextPath() %>/css/prettyPhoto.css" rel="stylesheet">
@@ -18,20 +24,15 @@
 	<link href="<%=request.getContextPath() %>/css/main.css" rel="stylesheet">
 	<link href="<%=request.getContextPath() %>/css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
-    <script src="<%=request.getContextPath() %>/js/html5shiv.js"></script>
-    <script src="<%=request.getContextPath() %>/js/respond.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/html5shiv.js"></script>
+    <script src="<%=request.getContextPath()%>/js/respond.min.js"></script>
     <![endif]-->       
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-    <style type="text/css">
-    .brands-name .nav-stacked li a:hover{
-    	color: #fe980f;
-    	background: white;
-    }
-    </style>
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=request.getContextPath()%>/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=request.getContextPath()%>/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=request.getContextPath()%>/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="<%=request.getContextPath()%>/images/ico/apple-touch-icon-57-precomposed.png">
+    
 <%
 	UserDto userDto = (UserDto)session.getAttribute("userDto");
 	if(userDto == null){
@@ -43,8 +44,37 @@
 		</script>
 		<%
 	}
+	@SuppressWarnings("unchecked")
+	List<CartDto> cartList = (List<CartDto>)request.getAttribute("cartList");
 	
+	int cartListCnt = (Integer)request.getAttribute("cartListCnt");
+	String param = request.getParameter("param");
 %>    
+<script>
+	function addCart(prdtNo){
+		
+		$.ajax({
+			type : 'POST',
+			data : prdtNo,
+			url : '/cart/addCart.do',
+			dataType : 'json',
+			contentType : 'application/json; charset=UTF-8',
+			success : function(data){
+				if(data.flag == 0){
+					alert("이미 장바구니에 넣은 아이템입니다.");
+				}else{
+					alert("장바구니에 담겼습니다.");
+				}
+			},
+			error : function(error){
+				alert("error : " + error);
+			}
+			
+		
+		});
+	}
+</script>
+
 
 </head><!--/head-->
 
@@ -53,7 +83,7 @@
 		<div class="header_top"><!--header_top-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-6 ">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
@@ -113,7 +143,7 @@
 							<ul class="nav navbar-nav">
 								<li><a href="/exam/info.do"><i class="fa fa-user"></i> INFO</a></li>
 								<li><a href=""><i class="fa fa-star"></i> Wish List</a></li>
-								<li><a href="/cart/cartList.do"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="/cart/cartList.do" class="active"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<%if(userDto.getUser_no() == null){ %>
 								<li><a href="/exam/login.do"><i class="fa fa-lock"></i> LogIn</a></li>
 								<%}else {%>
@@ -142,7 +172,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Home</a></li>
-								<li><a href="/exam/shop.do">Shop</a></li>
+								<li ><a href="/exam/shop.do">Shop</a></li>
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
@@ -150,7 +180,7 @@
                                     </ul>
                                 </li> 
 								<li><a href="404.html">404</a></li>
-								<li><a href="contact-us.html" class="active">Contact</a></li>
+								<li><a href="contact-us.html" >Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -162,64 +192,65 @@
 				</div>
 			</div>
 		</div><!--/header-bottom-->
-	</header><!--/header-->
-	 
-	 <div id="contact-page" class="container">
-    	<div class="bg">
-	    	<div class="row">    		
-	    		<div class="col-sm-12">    			   			
-					<h2 class="title text-center">MY ACCOUNT</h2>    			    				    				
-					
-				</div>
-			</div>			 		
-		</div>    	
-    	<div class="row"> 
-   			<div class="col-sm-3">
-				<div class="left-sidebar">
-					<div class="brands_products"><!--brands_products-->
-						<h2>MENU</h2>
-						<div class="brands-name">
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#"> 계정 정보</a></li>
-								<li><a href="#"> 포인트 정보</a></li>
-								<li><a href="#"> 배송지 정보</a></li>
-								<li><a href="#"> 결제 정보</a></li>
-								<li><a href="#"> 주문 정보</a></li>
-								<li><a href="#"> <span class="pull-right">(9)</span>Boudestijn</a></li>
-								<li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
-							</ul>
-						</div>
-					</div><!--/brands_products-->
-					
-					<div class="shipping text-center"><!--shipping-->
-						<img src="images/home/shipping.jpg" alt="" />
-					</div><!--/shipping-->
-				
-				</div>
-			</div> 			
-			<div class="col-sm-3">
-				<h2 class="title text-center">할인 쿠폰</h2>
-				<p class="text-center" style="font-size:30px; font-weight: bold;" ><a href="" style="color: black;">0</a></p>  
+	</header>
+	<!-- Cart Start -->
+	<section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="#">Home</a></li>
+				  <li class="active">Shopping Cart</li>
+				</ol>
 			</div>
-			<div class="col-sm-3">
-				<h2 class="title text-center">배송중</h2>
-				<p class="text-center" style="font-size:30px; font-weight: bold;" ><a href="" style="color: black;">0</a></p>  
-			</div>
-			<div class="col-sm-3">
-				<h2 class="title text-center">포인트</h2>  
-				<p class="text-center" style="font-size:30px; font-weight: bold;" ><a href="" style="color: black;">0</a></p>
-			</div>	
-			<div class="col-sm-9">
-				<h2 class="title text-center" style="margin-top: 40px;">기본 배송지 정보</h2>
-				<p style="font-size: 25px;"><%=userDto.getUser_addr() %>, <%=userDto.getUser_addr_detail() %> (<%=userDto.getUser_post_code() %>)</p><a href="">수정하기</a>
-			</div>
-			<div class="col-sm-9">
-				<h2 class="title text-center" style="margin-top: 50px;">기본 결제 정보</h2>
-				
-			</div>
-    	</div>  
-   	</div>	
-    
+		<%if(cartListCnt >0){ %>
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed">
+					<thead>
+						<tr class="cart_menu">
+							<td class="image">Item</td>
+							<td class="description"></td>
+							<td class="price">Price</td>
+							<td class="quantity">Quantity</td>
+							<td class="total">Total</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+			<%for(int i=0; i<cartList.size(); i++){ %>
+						<tr>
+							<td class="cart_product">
+								<a href=""><img width="110" height="110" src="<%=cartList.get(i).getPic_path() %>" alt=""></a>
+							</td>
+							<td class="cart_description">
+								<h4><a href=""><%=cartList.get(i).getPrdt_name() %></a></h4>
+								<p>Product ID: <%=cartList.get(i).getPrdt_no() %></p>
+							</td>
+							<td class="cart_price">
+								<p>&#8361;<%=CommonUtil.objCommaFormat(cartList.get(i).getPrdt_price() )%></p>
+							</td>
+							<td class="cart_quantity">
+								<div class="cart_quantity_button">
+									<a class="cart_quantity_up" href=""> + </a>
+									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+									<a class="cart_quantity_down" href=""> - </a>
+								</div>
+							</td>
+							<td class="cart_total">
+								<p class="cart_total_price">&#8361;55</p>
+							</td>
+							<td class="cart_delete">
+								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+							</td>
+						</tr>
+			<%} %>
+					</tbody>
+				</table>
+		<%} %>
+		
+		</div>
+	</div>
+	</section> <!--/#cart_items-->
+	
 	
 	<footer id="footer"><!--Footer-->
 		<div class="footer-top">
@@ -236,7 +267,7 @@
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
-										<img src="images/home/iframe1.png" alt="" />
+										<img src="<%=request.getContextPath()%>/images/home/iframe1.png" alt="" />
 									</div>
 									<div class="overlay-icon">
 										<i class="fa fa-play-circle-o"></i>
@@ -251,7 +282,7 @@
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
-										<img src="images/home/iframe2.png" alt="" />
+										<img src="<%=request.getContextPath()%>/images/home/iframe2.png" alt="" />
 									</div>
 									<div class="overlay-icon">
 										<i class="fa fa-play-circle-o"></i>
@@ -266,7 +297,7 @@
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
-										<img src="images/home/iframe3.png" alt="" />
+										<img src="<%=request.getContextPath()%>/images/home/iframe3.png" alt="" />
 									</div>
 									<div class="overlay-icon">
 										<i class="fa fa-play-circle-o"></i>
@@ -281,7 +312,7 @@
 							<div class="video-gallery text-center">
 								<a href="#">
 									<div class="iframe-img">
-										<img src="images/home/iframe4.png" alt="" />
+										<img src="<%=request.getContextPath()%>/images/home/iframe4.png" alt="" />
 									</div>
 									<div class="overlay-icon">
 										<i class="fa fa-play-circle-o"></i>
@@ -294,7 +325,7 @@
 					</div>
 					<div class="col-sm-3">
 						<div class="address">
-							<img src="images/home/map.png" alt="" />
+							<img src="<%=request.getContextPath()%>/images/home/map.png" alt="" />
 							<p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
 						</div>
 					</div>
@@ -371,7 +402,7 @@
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+					<p class="pull-left">Copyright © 2013 E-Shopper. All rights reserved.</p>
 					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
 				</div>
 			</div>
@@ -381,14 +412,40 @@
 	
 
   
-    <script src="<%=request.getContextPath() %>/js/jquery.js"></script>
-	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-	<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> -->
-    <%-- <script type="text/javascript" src="<%=request.getContextPath() %>/js/gmaps.js"></script> --%>
-	<script src="<%=request.getContextPath() %>/js/contact.js"></script>
-	<script src="<%=request.getContextPath() %>/js/price-range.js"></script>
-    <script src="<%=request.getContextPath() %>/js/jquery.scrollUp.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/jquery.prettyPhoto.js"></script>
-    <script src="<%=request.getContextPath() %>/js/main.js"></script>
+    <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
+	<script src="<%=request.getContextPath()%>/js/price-range.js"></script>
+    <script src="<%=request.getContextPath()%>/js/jquery.scrollUp.min.js"></script>
+	<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/jquery.prettyPhoto.js"></script>
+    <script src="<%=request.getContextPath()%>/js/main.js"></script>
+    <script type="text/javascript">
+		$("a").click(function(){
+			var id = $(this).attr("id");
+			 if($("#menuClickFlag").val() != id){
+				var tmp = $("#menuClickFlag").val();
+				$("#i"+tmp).addClass("fa-plus");
+				
+				$("#i"+tmp).removeClass("fa-minus");
+			}
+			
+			
+			if($("#h"+id).val() == '0'){
+				$("#h"+id).val("1");
+				$("#i"+id).addClass("fa-minus");
+	
+				$("#i"+id).removeClass("fa-plus");
+				$("#menuClickFlag").val(id);
+	
+			}else{
+				$("#h"+id).val("0");
+				$("#i"+id).addClass("fa-plus");
+				
+				$("#i"+id).removeClass("fa-minus");
+				$("#menuClickFlag").val(id);
+			}
+		});
+	
+	
+	</script>
 </body>
 </html>

@@ -149,7 +149,7 @@
 							<ul class="nav navbar-nav">
 								<li><a href="/exam/info.do"><i class="fa fa-user"></i> INFO</a></li>
 								<li><a href=""><i class="fa fa-star"></i> Wish List</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="/cart/cartList.do"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<%if(userDto.getUser_no() == null){ %>
 								<li><a href="/exam/login.do"><i class="fa fa-lock"></i> LogIn</a></li>
 								<%}else {%>
@@ -186,7 +186,7 @@
                                     </ul>
                                 </li> 
 								<li><a href="404.html">404</a></li>
-								<li><a href="contact-us.html" class="active">Contact</a></li>
+								<li><a href="contact-us.html" >Contact</a></li>
 							</ul>
 						</div>
 					</div>

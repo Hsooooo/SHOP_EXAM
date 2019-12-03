@@ -100,7 +100,7 @@
 							<ul class="nav navbar-nav">
 								<li><a href="/exam/info.do"><i class="fa fa-user"></i> INFO</a></li>
 								<li><a href=""><i class="fa fa-star"></i> Wish List</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="/cart/cartList.do"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<%if(userDto.getUser_no() == null){ %>
 								<li><a href="/exam/login.do"><i class="fa fa-lock"></i> LogIn</a></li>
 								<%}else {%>
@@ -128,16 +128,8 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="/exam/shop.do">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
+								<li><a class="active" href="/exam/home.do">Home</a></li>
+								<li ><a  href="/exam/shop.do">Shop</a></li>
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="blog.html">Blog List</a></li>
