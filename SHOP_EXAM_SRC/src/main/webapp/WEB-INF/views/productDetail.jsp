@@ -44,7 +44,30 @@
 	
 %>    
 
-
+<script>
+	function addCart(prdtNo ,amt){
+		
+		$.ajax({
+			type : 'POST',
+			data : {'prdtNo' : prdtNo, 'amt' : amt}, 
+			url : '/cart/addCart.do',
+			dataType : 'json',
+			contentType : 'application/json; charset=UTF-8',
+			success : function(data){
+				if(data.flag == 0){
+					alert("이미 장바구니에 넣은 아이템입니다.");
+				}else{
+					alert("장바구니에 담겼습니다.");
+				}
+			},
+			error : function(error){
+				alert("error : " + error);
+			}
+			
+		
+		});
+	}
+</script>
 
 </head><!--/head-->
 

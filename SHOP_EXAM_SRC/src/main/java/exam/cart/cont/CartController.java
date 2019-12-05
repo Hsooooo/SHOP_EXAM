@@ -70,7 +70,8 @@ public class CartController {
 		try {
 			UserDto dto = (UserDto)request.getSession().getAttribute("userDto");
 			if(dto == null) {
-				response.sendRedirect("/exam/login.do");
+				log.info("dto null");
+				return "redirect:/exam/login.do";
 			}
 			paramMap.put("userNo",dto.getUser_no());
 			int cnt = cartService.getUserCartListCnt(paramMap);

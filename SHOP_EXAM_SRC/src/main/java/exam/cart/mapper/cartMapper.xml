@@ -14,6 +14,7 @@
 			,	USER_NO
 			,	CART_REG_DATE
 			,	BUY_STATUS
+			,	CART_AMT
 		)
 		VALUES(
 				SEQ_USER_CART_BUY_INFO.NEXTVAL
@@ -21,6 +22,12 @@
 			,	#{userNo}
 			,	SYSDATE
 			,	'0'
+			<if test="cartAmt == null">
+			,	1
+			</if>
+			<if test="cartAmt != null">
+			,	#{cartAmt}
+			</if>
 		)
 	</insert>
 	<select id="getUserCartList" parameterType="java.util.Map" resultType="exam.cart.dto.CartDto">
