@@ -1,6 +1,5 @@
 package exam.cart.cont;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,19 +28,26 @@ public class CartController {
 	@Autowired
 	private CartService cartService;
 	
+	/**
+	 * 카트 추가(ajax 처리)
+	 * @param request
+	 * @param prdtNo
+	 * @return
+	 */
 	@RequestMapping(value="/addCart.do")
-	public ModelAndView addCart(HttpServletRequest request, @RequestBody String prdtNo) {
+	public ModelAndView addCart(HttpServletRequest request, @RequestBody Map<String,Object> param) {
 		ModelAndView mv = new ModelAndView("jsonView");
 		HttpSession session = request.getSession();
 		Map<String, String> paramMap = new HashMap<String, String>();
-		Map<Object, Object> map = new HashMap<Object, Object>();
+		
 		UserDto userDto = (UserDto)session.getAttribute("userDto");
-		log.info("prdtNo >"+ prdtNo);
+		log.info("prdtNo >"+ param.get("prdtNo"));
 		String userNo = userDto.getUser_no();
 		log.info("userNo>" + userNo);
 		
 		paramMap.put("userNo", userNo);
-		paramMap.put("prdtNo", prdtNo);
+		paramMap.put("prdtNo", (String)param.get("prdtNo"));
+		paramMap.put("cartAmt", (String)param.get("amt"));
 		try {
 			int cartCnt = cartService.chkCart(paramMap);
 			
@@ -64,6 +70,12 @@ public class CartController {
 	}
 	
 	
+	/**
+	 * 회원 카트 목록
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value="cartList.do")
 	public String cartList(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, String> paramMap = new HashMap<String, String>();
@@ -86,5 +98,24 @@ public class CartController {
 		
 		
 		return "cart";
+	}
+	
+	@RequestMapping(value="delCart.do")
+	public String delCart(HttpServletRequest request) {
+		Map<String, String> paramMap = new HashMap<String, String>();
+		String prdtNo = request.getParameter("prdtNo");
+		try {
+			paramMap.put("prdtNo",prdtNo);
+			int cnt = cartService.delCart(paramMap);
+		}catch(Exception e) {
+			
+		}
+		
+		return "redirect:/cart/cartList.do";
+	}
+	
+	@RequestMapping(value="checkoutView.do")
+	public String checkoutView() {
+		return "checkout";
 	}
 }

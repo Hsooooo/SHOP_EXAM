@@ -45,11 +45,14 @@
 %>    
 
 <script>
-	function addCart(prdtNo ,amt){
+	function addCart(prdtNo){
+		var data = {}
 		
+		data["prdtNo"] = prdtNo;
+		data["amt"] = $("#amt").val();
 		$.ajax({
 			type : 'POST',
-			data : {'prdtNo' : prdtNo, 'amt' : amt}, 
+			data : JSON.stringify(data),
 			url : '/cart/addCart.do',
 			dataType : 'json',
 			contentType : 'application/json; charset=UTF-8',
@@ -330,8 +333,11 @@
 								<span>
 									<span>KW &#8361;<%=CommonUtil.objCommaFormat(productDto.getPrdt_price()) %></span><br>
 									<p>Quantity: </p>
-									<input type="text" value="3" />
-									<button type="button" class="btn btn-fefault cart">
+									<a class="cart_quantity_down" href=""> - </a>
+									<input class="cart_quantity_input" type="text" id="amt" name="amt" value="1" autocomplete="off" size="2">
+									<a class="cart_quantity_up" href=""> + </a>
+									
+									<button type="button" class="btn btn-fefault cart" onClick="addCart('<%=productDto.getPrdt_no()%>')">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>

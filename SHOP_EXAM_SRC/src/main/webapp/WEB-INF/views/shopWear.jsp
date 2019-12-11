@@ -57,11 +57,14 @@
 	String param = request.getParameter("param");
 %>    
 <script>
-	function addCart(prdtNo){
+	function addCart(prdtNo,amt){
+		var data = {}
 		
+		data["prdtNo"] = prdtNo;
+		data["amt"] = amt;
 		$.ajax({
 			type : 'POST',
-			data : prdtNo,
+			data : JSON.stringify(data),
 			url : '/cart/addCart.do',
 			dataType : 'json',
 			contentType : 'application/json; charset=UTF-8',
@@ -294,7 +297,7 @@
 												<h2>&#8361;<%=CommonUtil.objCommaFormat(productList.get(i).getPrdt_price()) %></h2>
 												<p><%=productList.get(i).getPrdt_name() %></p>
 												<p style="font-size:11px;"><%=productList.get(i).getPrdt_brand() %></p>
-												<a href="javascript:void(0)" onClick="addCart('<%=productList.get(i).getPrdt_no() %>')" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<a href="javascript:void(0)" onClick="addCart('<%=productList.get(i).getPrdt_no() %>','1')" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 												<%-- <a href="javascript:void(0)" onClick="javascript:alert('<%=productList.get(i).getPrdt_no() %>')">테스트</a> --%>
 											</div>
 										</div>

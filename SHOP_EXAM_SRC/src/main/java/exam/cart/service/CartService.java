@@ -15,4 +15,6 @@ public interface CartService {
 	
 	public int getUserCartListCnt(Map<String, String> paramMap) throws Exception;
 
+	public int delCart(Map<String, String> paramMap) throws Exception;
+
 }

@@ -12,6 +12,7 @@ public class CartDto {
 	private String pic_path;
 	private String prdt_name;
 	private String prdt_price;
+	private String cart_amt;
 	public String getCart_no() {
 		return cart_no;
 	}
@@ -77,6 +78,12 @@ public class CartDto {
 	}
 	public void setPrdt_price(String prdt_price) {
 		this.prdt_price = prdt_price;
+	}
+	public String getCart_amt() {
+		return cart_amt;
+	}
+	public void setCart_amt(String cart_amt) {
+		this.cart_amt = cart_amt;
 	}
 	
 	

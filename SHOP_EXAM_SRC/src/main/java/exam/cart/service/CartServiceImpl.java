@@ -38,4 +38,10 @@ public class CartServiceImpl implements CartService {
 		// TODO Auto-generated method stub
 		return cartDao.getUserCartListCnt(paramMap);
 	}
+
+	@Override
+	public int delCart(Map<String, String> paramMap) throws Exception {
+		
+		return cartDao.delCart(paramMap);
+	}
 }

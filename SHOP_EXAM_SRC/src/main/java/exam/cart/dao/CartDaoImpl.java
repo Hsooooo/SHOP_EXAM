@@ -42,4 +42,10 @@ public class CartDaoImpl implements CartDao {
 		return sqlSession.selectOne("getUserCartListCnt",paramMap);
 	}
 
+	@Override
+	public int delCart(Map<String, String> paramMap) throws Exception {
+		
+		return sqlSession.delete("delCart", paramMap);
+	}
+
 }
