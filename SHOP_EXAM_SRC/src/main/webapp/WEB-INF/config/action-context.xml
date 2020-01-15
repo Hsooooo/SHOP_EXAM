@@ -10,6 +10,7 @@
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<context:component-scan base-package="exam.*.cont"/>
 	<context:component-scan base-package="admin.*.cont"/>
+	<context:component-scan base-package="test.*.cont"/>
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
@@ -28,8 +29,9 @@
 	<!--home Dir-->
 	<!-- <mvc:resources location="/img/**" mapping="C:\git_workspace\git\SHOP_EXAM\SHOP_EXAM_SRC\src\main\resources\img"/> -->
 	<!--Comp Dir-->
-	<mvc:resources location="/img/**" mapping="C:/exam_git/SHOP_EXAM/SHOP_EXAM_SRC/src/main/resources/img"/>
-	
+	<!-- <mvc:resources location="/img/**" mapping="C:/exam_git/SHOP_EXAM/SHOP_EXAM_SRC/src/main/resources/img"/> -->
+	<!-- AWS Dir -->
+	<mvc:resources location="/img/**" mapping="/var/apache-tomcat-8.5.50/webapps/img"/>
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="52428800"/>

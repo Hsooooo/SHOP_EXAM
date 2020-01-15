@@ -35,7 +35,10 @@ public class AdminController {
 	//home Dir
 	//private final String imgPath = "C:\\git_workspace\\git\\SHOP_EXAM\\SHOP_EXAM_SRC\\src\\main\\resources\\img";
 	//comp Dir
-	private final String imgPath = "C:\\exam_git\\SHOP_EXAM\\SHOP_EXAM_SRC\\src\\main\\resources\\img";
+	//private final String imgPath = "C:\\exam_git\\SHOP_EXAM\\SHOP_EXAM_SRC\\src\\main\\resources\\img";
+	//AWS Dir
+	private final String imgPath = "/var/apache-tomcat-8.5.50/webapps/img";
+	
 	@Autowired
 	private ShopService shopService;
 	
@@ -132,6 +135,9 @@ public class AdminController {
 					
 					file.put("origin Name", originName);
 					file.put("serverFile", serverFile);
+					//AWS Dir
+					//String serverPath = "http://52.79.228.27/img/";
+					//Comp, Home Dir
 					String serverPath = "http://localhost:8080/img/";
 					String realPath = serverPath + saveFileName;
 					if(fieldName.contains("prdt_desc")) {
