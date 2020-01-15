@@ -25,6 +25,7 @@ INSERT INTO BRAND_INFO(BRAND_NO, BRAND_NAME, BRAND_DESC) VALUES(SEQ_BRAND_INFO.N
 CREATE SEQUENCE SEQ_USER_BASIC_INFO;
 CREATE SEQUENCE SEQ_PRDT_BASIC_INFO;
 CREATE SEQUENCE SEQ_PRDT_PIC_INFO;
+CREATE SEQUENCE SEQ_BRAND_INFO;
 
 구동전 server.xml -> Context Path 확인할것(if /exam -> /)
 					 <Context docBase="C:\git_workspace\git\SHOP_EXAM\SHOP_EXAM_SRC\src\main\resources\img" path="/img" reloadable="true"/> 경로 맞춰줄것
